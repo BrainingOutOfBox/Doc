@@ -74,7 +74,7 @@ Das Endprodukt dieses Projekts soll von möglichst hoher Qualität sein. Wie in 
   \label{tab:Massnahmen}
 \end{table}
 
-\subsubsection{Arbeitspakete}
+\subsubsection*{Arbeitspakete}
 Die gesamte Arbeit ist in Arbeitspakete unterteilt, die auf Jira getrackt sind. Dabei sind relevante Informationen wie die Komplexität, Dauer, der damit verbundene Epic und die Unterteilung in Arbeitskategorie erfasst.
 
 Für die Abschätzung der Komplexität der Arbeiten verwenden wir \textbf{Story Points}. Dabei einigen wir uns auf folgendes Schema:
@@ -101,8 +101,9 @@ Um die Pakete logisch unterteilen zu können, existieren Arbeitskategorien. Dies
 	\item[ProjektManagement] Alle Aufgaben, die im Zusammenhang mit Projektmanagement stehen, zum Beispiel das Risikomanagement.
 	\item[Planung] Planungsaufgaben. Zum Beispiel steht jede Woche ein Planungsmeeting an, welches dieser Kategorie zugeordnet ist.
 	\item[Dokumentation] Arbeiten an der Dokumentation des Projektes.
-	\item[Infrastruktur] Diejenigen Arbeitspakete, die für die Entwicklung und für den Betrieb des Projekts notwendig sind.
-	\item[Entwicklung] Programmierung der Applikation.
+	\item[Infrastruktur] Diejenigen Arbeitspakete, die für die Entwicklung und für den Betrieb des Projekts notwendig sind. Ein Beispiel dafür kann das Einrichten eines Codequalitätstools sein. 
+	\item[Entwicklung] Arbeitspakete welche mit der Programmierung der Applikation in Zusammenhang stehen.
+	\item[Testing] Arbeitspakete wie zum Beispiel das Schreiben von Testfällen kann dieser Arbeitskategorie zugewiesen werden.
 \end{description}
 
 \subsubsection*{Eingesetzte Werkzeuge}
@@ -118,6 +119,7 @@ Der Entwicklungscode wird in öffentlichen Github Repositories unter der Organis
 
 \subsubsection*{Vorgehen bei der Entwicklung}
 Jedes Teammitglied verfügt über eine lokale Kopie der Repositories von Github. Für jede Aufgabe/Issue wird ein eigener Branch erstellt. Darin werden die Änderungen für diese Aufgabe vorgenommen. Die Änderungen sollen mit sinnvollen und präzisen Commit-Notizen festgehalten werden. Um ein Tracking der Änderung möglichst effizient zu gestalten, gilt es möglichst früh, möglichst viel zu commiten.
+%Evtl. muss hier noch ein allgemeiner Workflow für das Arbeiten eingefügt werden.
 
 \subsubsection*{Code Guidelines}
 Da Xamarin auf .Net bzw. C\# aufbaut, werden die Code Guidelines von .Net verwendet. \cite{guidelines-DotNet}
