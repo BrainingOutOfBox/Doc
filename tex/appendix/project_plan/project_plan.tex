@@ -10,7 +10,7 @@ Der Gültigkeitsbereich erstreckt sich über die gesamte Dauer des Projekts. Der
 Die Motivation dieser Studienarbeit besteht darin, eine Cross-Platform App zu programmieren, welche die Methode 635 \cite{methode-635} als mobile App für Android und iOS umsetzt. Dabei sollen moderne Technologien zum Einsatz kommen, welche es den Anwendern ermöglichen schneller und einfacher eine Lösung für ein Problem zu erarbeiten.
 
 \subsubsection*{Einschränkungen}
-Das Projekt ist auf die Dauer des Herbstsemester 2018 begrenzt (bis 21. Dezember 2018). Zudem sollte das Projekt mit ungefähr 240 Arbeitsstunden (gesamthaft 480 Stunden) realisiert werden können. Bleibt am Ende Zeit über, werden optionale Features implementiert und als zusätzliche Funktionalität ergänzt.
+Das Projekt ist auf die Dauer des Herbstsemester 2018 begrenzt (bis 21. Dezember 2018). Zudem sollte das Projekt mit ungefähr 240 Arbeitsstunden (gesamthaft 480 Stunden) realisiert werden können. Bleibt am Ende Zeit übrig, werden optionale Features implementiert und als zusätzliche Funktionalität ergänzt.
 
 \subsection{Projektorganisation}
 In unserem Projekt arbeiten wir in einer flachen Organisationsstruktur, wobei die wesentlichen Entscheide im ganzen Projektteam und/oder mit dem Dozenten an den wöchentlichen Besprechungen getroffen werden. An den Besprechungen getroffene Entscheidungen werden in \href{https://github.com/BrainingOutOfBox/Doc/wiki} {Protokollen} dokumentiert. Die Projektmitglieder sind innerhalb des Teams gleichgestellt.
@@ -21,19 +21,25 @@ In unserem Projekt arbeiten wir in einer flachen Organisationsstruktur, wobei di
 \subsubsection*{Ansprechspartner}
 Im Projekt «Methode 635 als Cross Plattform App mit Xamarin» ist folgender Ansprechpartner vorhanden.
 
-\begin{labeling}{alligator}
-\item [Dozent] Prof. Dr. Olaf Zimmermann ist der betreuende Dozent für diese Studienarbeit. Er ist neben der Betreuung auch für die Bewertung des Projekts verantwortlich. 
-\end{labeling}
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Dozent}]
+	\item[Dozent] Prof. Dr. Olaf Zimmermann ist der betreuende Dozent für diese Studienarbeit. Er ist neben der Betreuung auch für die Bewertung des Projekts verantwortlich. 
+\end{description}
 
 \subsection{Projektmanagement}
-Eine ausführliche Iterationsplanung mit den dazugehörigen Meilensteinen befindet sich auf \href{https://hsr-sa.atlassian.net/}{Jira}. Die aufgewendeten Zeiten für ein Issue werden ebenfalls dort erfasst. 
-Da wir mit einer agilen Entwicklung arbeiten, wird die Planung während dem Projekt laufend aktualisiert und den aktuellen Gegebenheiten angepasst. 
-Wie in Kapitel \ref{subsec:timeline} auf Seite \pageref{fig:projekt-plan} zu sehen, ist jedoch schon ein grober Projektablauf ausgearbeitet. 
+Eine ausführliche Iterationsplanung mit den dazugehörigen Meilensteinen befindet sich auf \href{https://hsr-sa.atlassian.net/}{Jira}. Die aufgewendeten Zeiten für ein Issue werden ebenfalls dort erfasst.
 
+
+Da wir mit einer agilen Entwicklung arbeiten, wird die Planung während dem Projekt laufend aktualisiert und den aktuellen Gegebenheiten angepasst. 
+
+Wie in Abbildung \ref{fig:projekt-plan} zu sehen, ist ein grober Projektablauf ausgearbeitet. 
+
+
+%TODO: Repos sollten bald private sein
 Zur Verwaltung des Codes nutzen wir \href{https://github.com/BrainingOutOfBox/App}{öffentliche Github Repositories}. Die Kommunikation abseits der HSR Anwesenheit erfolgt über einen Whats-App Chat oder alternativ über einen Slack Channel.
 
 \subsubsection*{Besprechungen}
-Wenn immer möglich trifft sich einmal in der Woche das ganze Projektteam miteinander um sich über den aktuellsten Stand des Projekts auszutauschen, Fragen zu klären, Probleme anzugehen oder die nächsten Schritte zu planen. 
+Das Projektteam trifft sich einmal in der Woche das ganze um sich über den aktuellen Stand des Projekts auszutauschen, Fragen zu klären, Probleme anzugehen oder die nächsten Schritte zu planen. 
+
 Diese wöchentlichen Besprechungen finden, falls nicht anders vorgesehen, jeden Donnerstagmorgen um 09:00 Uhr statt. 
 
 Über jede Besprechung wird \href{https://github.com/BrainingOutOfBox/Doc/wiki} {Protokoll} geführt. Dies mit dem Ziel, die Entscheidungen festzuhalten und Missverständnisse zu vermeiden.
@@ -42,37 +48,67 @@ Diese wöchentlichen Besprechungen finden, falls nicht anders vorgesehen, jeden 
 % TODO Excel File mit Risiken für das Projekt ausfüllen und einfügen
 
 \subsubsection*{Umgang mit Risiken}
-Um auch auf unbekannte Risiken vorbereitet zu sein, wurde am Ende des Projektes eine Reserve eingeplant. Zudem haben Sie alle Teilnehmer bereit erklärt ihr Engagement punktuell zu erhöhen, falls die Situation dies erfordert. Diese Erhöhung sollte jedoch nur Phasenweise sein und in einer folgenden Phase kompensiert werden.
+Um auch auf unbekannte Risiken vorbereitet zu sein, ist am Ende des Projektes eine Reserve eingeplant. Zudem haben sich alle Teilnehmer bereit erklärt ihr Engagement punktuell zu erhöhen, falls die Situation dies erfordert. Diese Erhöhung sollte jedoch nur Phasenweise sein und in einer folgenden Phase kompensiert werden.
 
 \subsubsection*{Qualitätsmassnahmen}
-Das Endprodukt dieses Projekts soll von möglichst hoher Qualität sein. Wie in Tabelle \ref{tab:Massnahmen} auf Seite \pageref{tab:Massnahmen} zu sehen, wurden folgende Massnahmen getroffen, um diese Qualität zu erreichen.
+Das Endprodukt dieses Projekts soll von möglichst hoher Qualität sein. Wie in Tabelle \ref{tab:Massnahmen} zu sehen ist, treffen wir folgende Massnahmen, um diese Qualität zu erreichen.
 
 \renewcommand{\arraystretch}{2}
-\begin{table}
-  \begin{tabular}{ p{3cm} | c | p{5cm} }
-    Massnahme			& Zeitraum	 	& Ziel \\
+\begin{table}[h]
+  \begin{tabular}{ | p{3cm} | c | p{5.5cm} | }
+  	\hline
+    \textbf{Massnahme}			& \textbf{Zeitraum}	 	& \textbf{Ziel} \\
     \hline
     Meeting im Team und mit Betreuer & Jede Woche & Projektstand aufzeigen, allfällige Probleme möglichst früh erkennen.\\
     \hline
-    Code Reviews & Bei jedem Pull Request & Die Qualität des Codes wird durch die Einhaltung der Code Style Guidelines verbessert.
+    Code Reviews & Bei jedem Pull Request & Die Qualität des Codes wird durch die Einhaltung der Code Style Guidelines verbessert.\\
+    \hline
   \end{tabular}
   \caption[Projektplan]{Massnahmen}
   \label{tab:Massnahmen}
 \end{table}
 
+\subsubsection{Arbeitspakete}
+Die gesamte Arbeit ist in Arbeitspakete unterteilt, die auf Jira getrackt sind. Dabei sind relevante Informationen wie die Komplexität, Dauer, der damit verbundene Epic und die Unterteilung in Arbeitskategorie erfasst.
+
+Für die Abschätzung der Komplexität der Arbeiten verwenden wir \textbf{Story Points}. Dabei einigen wir uns auf folgendes Schema:
+
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | r |}
+		\hline
+		\textbf{Story Points} & \textbf{Bedeutung}\\
+		\hline
+		1-3 & Niedrige Komplexität \\
+		4-6 & Mittlere Komplexität \\
+		7-9 & Komplexe bis sehr komplexe Arbeit\\
+		\hline
+	\end{tabular}
+	\caption[Story-Points]{Story Points Komplexität}
+	\label{tab:story-points}
+\end{table}
+Das Unterteilen in drei Punkte pro Zeile ermöglicht ein genaueres Abschätzen innerhalb der Komplexitätskategorie. Story Points können nicht direkt in zeitlichen Aufwand umgerechnet werden. Für den Aufwand existiert ein separates Feld.
+
+Um die Pakete logisch unterteilen zu können, existieren Arbeitskategorien. Diese werden mit Labels auf den Tickets markiert und können folgende Werte annehmen:
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries ProjektManagement}]
+	\item[ProjektManagement] Alle Aufgaben, die im Zusammenhang mit Projektmanagement stehen, zum Beispiel das Risikomanagement.
+	\item[Planung] Planungsaufgaben. Zum Beispiel steht jede Woche ein Planungsmeeting an, welches dieser Kategorie zugeordnet ist.
+	\item[Dokumentation] Arbeiten an der Dokumentation des Projektes.
+	\item[Infrastruktur] Diejenigen Arbeitspakete, die für die Entwicklung und für den Betrieb des Projekts notwendig sind.
+	\item[Entwicklung] Programmierung der Applikation.
+\end{description}
+
 \subsubsection*{Eingesetzte Werkzeuge}
-Die Entwicklungsumgebungen wurden so gewählt, dass Sie auf jedem Betriebssystem (Mac, Linux, Windows) eingesetzt werden können. Zudem wurde darauf geachtet, dass diese wenn möglich ohne Kosten verbunden sind.
+Um ein gutes Arbeiten zu ermöglichen, stehen viele Tools zur Verfügung, die im Folgenden beschrieben sind. Die primäre Entwicklungsumgebung ist Visual Studio und \href{https://visualstudio.microsoft.com/de/vs/mac/}{Visual Studio for Mac}.
 
-Da hauptsächlich C\# programmiert wird, wird auf Visual Studio als primäre Entwicklungsumgebung gesetzt. Mit \href{https://visualstudio.microsoft.com/de/vs/mac/}{Visual Studio for Mac} ist es mittlerweile auch möglich auf OSX dafür zu programmieren.
+\subsection{Entwicklung}%TODO Bald private repos
+Der Entwicklungscode wird in öffentlichen Github Repositories unter der Organisation \textbf{BrainingOutOfBox }gehalten. Für alle einzelnen Teile des Projekts gibt es ein eigenes Repository.
 
-
-\subsection{Entwicklung}
-Der Entwicklungscode wird in öffentlichen Github Repositories unter unserer Gruppe BrainingOutOfBox gehalten. Für alle einzelnen Teile des Projekts gibt es ein eigenes Repository.
-
-\begin{labeling}{alligator}
+\begin{description}[leftmargin=!,labelwidth=2cm]
 \item [Doc] \href{https://github.com/BrainingOutOfBox/Doc}{Dieses Repository} enthält alle relevanten Dateien, welche für die Dokumentation von Relevanz sind.
 \item [App] \href{https://github.com/BrainingOutOfBox/Doc}{Dieses Repository} enthält den gesamten Code für die Xamarin Applikation.
-\end{labeling}
+\end{description}
 
 \subsubsection*{Vorgehen bei der Entwicklung}
 Jedes Teammitglied verfügt über eine lokale Kopie der Repositories von Github. Für jede Aufgabe/Issue wird ein eigener Branch erstellt. Darin werden die Änderungen für diese Aufgabe vorgenommen. Die Änderungen sollen mit sinnvollen und präzisen Commit-Notizen festgehalten werden. Um ein Tracking der Änderung möglichst effizient zu gestalten, gilt es möglichst früh, möglichst viel zu commiten.
