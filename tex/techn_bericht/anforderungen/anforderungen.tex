@@ -14,18 +14,27 @@ Beim Thema Nicht-Funktionale Anforderungen halten wir uns an die Standards ISO 9
 
 %TODO Bild Link: https://blog.seibert-media.net/blog/2018/05/14/qualitaet-funktionale-und-nichtfunktionale-anforderungen-in-der-software-entwicklung/
 
-Diese Normen sind sehr umfangreich gestaltet. Wir werden uns daher auf die, für uns, wichtigsten Anforderungen konzentrieren.
+Diese Normen sind sehr umfangreich gestaltet. Wir werden uns daher auf die, für uns, wichtigsten Anforderungen konzentrieren. Um genaue und erfüllbare nicht-funktionale Anforderungen zu definieren, müssen die SMART-Kriterien \cite{SMART} erfüllt sein. 
 
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Wiederherstellbarkeit}]
-	\item[Ressourcennutzung] Die internen Ressourcen wie Kamera, Dateisystem, Batterie usw. müssen sparsam und dürfen nur falls nötig eingesetzt werden.
-	\item[Bedienbarkeit] Die Bedienbarkeit der Applikation muss einfach und intuitiv gestaltet sein.
-	\item[Fehlervermeidung] Dem Benutzer müssen im Falle eines Fehler einfache und verständliche Fehlermeldungen präsentiert werden.
-	\item[Ästhetik] Die Benutzeroberflächen der Applikation dürfen sich nicht wesentlich von den in Xamarin verwendetet Formen unterscheiden.
-	\item[Vertraulichkeit] Die Daten der Endbenutzer müssen zu jedem Zeitpunkt vertraulich behandelt werden.
-	\item[Anpassbarkeit] Die Anpassung oder Integration von neuen Brainstorming-Methoden muss gewährleistet sein.
-	\item[Installierbarkeit] Die Installation der Applikation auf einem Endgerät muss einfach gestaltet sein.
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Wiederverwendbarkeit}]
+	\item[Ressourcennutzung] Die internen Ressourcen Kamera, Dateisystem dürfen nur bei effektivem Bedarf benützt werden. Die CPU-Ressourcen\-nutzung darf im Durchschnitt pro Minute maximal zu 40\% in Anspruch genommen werden.\footnote{Referenzsystem Android: Huawei P10 mit Android Version 8.0.0 mit Hisilicon Kirin 960 CPU und 4GB RAM}\footnote{Referenzsystem iOS: iPhone 6 mit iOS Version 12 mit Dual-core 1.4 GHz Typhoon CPU und 1GB RAM}
+	
+	\item[Bedienbarkeit] Wenn eine Aktion länger als 1-2s geht, soll dem User ein Wartesymbol angezeigt werden. 
+	
+	\item[Ästhetik] Die Benutzeroberflächen der Applikation sind so gestaltet, dass die Elemente wiedererkennbar sind (Buttons haben gleichen Stil, leere Textfelder haben Platzhalter). 
+	
+	\item[Vertraulichkeit] Die Daten einer Brainstorming Session können nur von der zugehörigen Gruppe eingesehen werden. 
+	
+	\item[Anpassbarkeit] Die Anpassung bestehender oder Integration neuer Brain\-storming-Methoden muss gewährleistet sein.
+	
+	\item[Installierbarkeit] Die Installation der Applikation auf einem Endgerät erfolgt durch das Ausführen eines *.apk oder *.app. Dieser Prozess soll unter 1 Minute geschehen.
+	
 	\item[Co-Existenz] Sollte zu einem späteren Zeitpunkt entschieden werden ein Web-Frontend zu programmieren, muss dieses co-existent mit der Xamarin Applikation existieren können.
-	\item[Wiederherstellbarkeit] Im Falle eines fehlerhaften Features, muss es innerhalb eines Werktages möglich sein, die Applikation wieder auf den alten Stand zurück zu holen und erneut zu deployen.	
-	\item[Wiederverwendbarkeit] Es ist darauf zu achten, dass der geschriebene Code, falls möglich, wiederverwendet wird.
-	\item[Analysierbarkeit] Es muss möglich sein, die Endnutzer und deren Verhalten mit der Applikation zu analysieren.	
+	
+	\item[Wiederherstellbarkeit] Im Falle eines fehlerhaften Features, muss es innerhalb eines Werktages möglich sein, die Applikation wieder auf den letzten funktionierenden Stand zurück zu holen und erneut zu deployen.	
+	
+	\item[Wiederverwendbarkeit] Die Auswertung von 'Duplicated Code' in SonarQube soll unter 8\% liegen. Dies deutet auf eine hohe Wiederverwendbarkeit hin, denn ansonsten müsste der Code kopiert werden. 
+	
+	%TODO: Referenz auf Use Cases
+	\item[Analysierbarkeit] Das Ausführen eines Use-Cases muss durch Analyse von Logfiles erkennbar sein.
 \end{description}
