@@ -5,7 +5,6 @@ In den folgenden Kapiteln werden jegliche funktionalen Anforderungen an die Appl
 
 \paragraph{Brief Use-Cases}
 
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{img/anforderungen/UC-Methode635}
@@ -19,20 +18,151 @@ Jeder Use-Case hat den nachfolgend kurz (\textit{briefly}) beschriebenen  Funkti
 		\desclabelstyle{\multilinelabel}
 		\desclabelwidth{4.5cm}}
 	\item[\textit{UC1: }Login] Als Participant möchte ich mich mit Benutzernamen und Passwort in das System einloggen können.
+	
 	\item[\textit{UC2: }Logout] Als eingeloggter Participant will ich mich ausloggen, sodass das Startfenster wieder erscheint.
+	
 	\item[\textit{UC3: }Create Account] Als Participant der Applikation möchte ich mich registrieren können.
+	
 	\item[\textit{UC4: }Delete Account] Als Participant will ich meinen erstellten Account wieder löschen können.
+	
 	\item[\textit{UC5: }Join Group] Als Participant will ich einer bereits existierenden Gruppe beitreten können.
+	
 	\item[\textit{UC6: }Leave Group] Als Participant will eine beigetretene Gruppe verlassen können.
+	
 	\item[\textit{UC7: }View Results] Als Participant will ich, nachdem eine Brainstorming Session durchgeführt wurde, das Resultat meiner Gruppe einsehen können.
+	
 	\item[\textit{UC8: }Create\\Solutionfragment] Als Participant will ich während einer Brainstorming Session ein Lösungsfragment erstellen und einreichen können. 
+	
 	\item[\textit{UC9: }Start \\Brainstorming] Als Moderator will ich eine Brainstorming Session starten.
-	\item[\textit{UC10: }Create Group] Als Moderator will ich eine Gruppe erstellen können. 
+	
+	\item[\textit{UC10: }Create Group] Als Moderator will ich 
+	eine Gruppe erstellen können. 
+	
 	\item[\textit{UC11: }Delete Group] Als Moderator will ich eine Gruppe löschen können.
 \end{basedescript}
 
 \paragraph{Fully-Dressed Use-Cases}
-%TODO write fully dressed
+Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} empfohlenen Punkten.
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+	\begin{longtable}{| c | p{7cm} |}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Use Case 7: View Result}}\\
+		\hline\hline
+		\textit{Primary Actor} & Participant\\
+		\hline
+		\textit{Stakeholders \& Interests} & Ein Participant wünscht sich eine Übersicht von allen Lösungsfragmenten der Gruppenmitglieder. Er will das Gesamtresultat einsehen und daraus etwas lernen. \\
+		\hline
+		\textit{Preconditions} & Participant existiert im System (UC3), ist eingeloggt (UC1) und einer Gruppe beigetreten (UC5). Zudem hat die Gruppe des Participants alle Runden durchgemacht.\\
+		\hline
+		\textit{Post Conditions/Success Guarantee} & Die Notizen aller Participants werden übersichtlich dargestellt. Das heisst, jede Ausgangsidee ist mit deren Ergänzungen von den verschiedenen Participants ersichtlich.\\
+		\hline
+		\textit{Main Success Scenario/Basic Flow} & 
+		\begin{enumerate}[noitemsep]
+			\item Der Participant schliesst die letzte Runde als Letzter ab.
+			\item Das System speichert seine Notizen auf dem Server.
+			\item Das System zeigt dem Participant eine Meldung, dass die Resultate einsehbar sind.
+			\item Der Participant clickt auf "Resultate einsehen" (o.Ä.).
+			\item Das System zeigt dem Participant eine Übersicht mit allen Notizen der Teilnehmer.
+		\end{enumerate}\\
+		\hline
+		\textit{Alternative Flows} &
+		Alternative	Success Scenario 1:
+		\begin{enumerate}[label=1.\alph*,noitemsep]
+			\item Der Participant schliesst die Runde nicht als Letzter ab.
+			\item Das System speichert seine Notizen auf dem Server und zeigt dem Benutzer die verbleibende Zeit an.
+			\item Der Participant aktualisiert nach dem Ablauf der Zeit.
+		\end{enumerate}
+		Alternative Success Scenario 2:
+		\begin{enumerate}[label=4.\alph*,noitemsep]
+			\item Der Participant clickt nicht auf "Resultate einsehen", sondern navigiert zurück auf den Homescreen.
+			\item Das System zeigt dem Participant den Homescreen an.
+			\item Der Participant navigiert auf seine Gruppe.
+			\item Das System zeigt dem User die Gruppe an.
+			\item Der Participant will sich die Resulate dieser Gruppe anzeigen lassen und clickt entsprechenden Button.
+			\item Das System zeigt dem Benutzer die Übersicht an.
+		\end{enumerate}\\
+		\hline
+		\textit{Frequency of Occurrence} & Oft, Kernfunktionalität\\
+		\hline
+	\end{longtable}
+\end{center}
+
+
+
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+	\begin{longtable}{| c | p{7cm} |}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Use Case 8: Create Solutionfragment}}\\
+		\hline\hline
+		\textit{Primary Actor} & Participant\\
+		\hline
+		\textit{Stakeholders \& Interests} & Ein Participant will, dass seine in der aktuellen Runde erfassten Notizen erfasst werden. \\
+		\hline
+		\textit{Preconditions} & Der Participant muss existent (UC3) sowie eingeloggt (UC1) sein. Des Weiteren muss eine Gruppe existieren (UC10), zu welcher er gehört. Die Brainstorming Runde muss ebenfalls gestartet worden sein (UC9). \\
+		\hline
+		\textit{Post Conditions/Success Guarantee} & Vom Participant erfasste Notizen werden erfolgreich auf dem System gespeichert. \\
+		\hline
+		\textit{Main Success Scenario/Basic Flow} & 
+		\begin{enumerate}[noitemsep]
+			\item Der Participant erfasst während der aktuellen Rundenzeit Notizen.
+			\item Das System zeigt diese Notizen an.
+			\item Der Participant beendet frühzeitig die Runde und clickt auf "Notizen abgeben" (o.Ä).
+			\item Das System persistiert die Notizen und zeigt dem Participant eine Bestätigung an. 
+			\item Der Benutzer kann aktualisieren, um den nächsten Rundenstart nicht zu verpassen.
+		\end{enumerate}\\
+		\hline
+		\textit{Alternative Flows} &
+		Alternative	Success Scenario 1:
+		\begin{enumerate}[label=3.\alph*,noitemsep]
+			\item Der Participant beendet die Runde nicht manuell.
+			\item Das System zeigt dem Participant eine Meldung an, dass die Zeit der Runde abgelaufen ist. Es persistiert die bis zu dem Zeitpunkt erfassten Notizen.
+		\end{enumerate}\\
+	
+		\hline
+		
+		\textit{Frequency of Occurrence} & Sehr oft, passiert pro Brainstorming-Session mehrmals.\\
+		
+		\hline
+	\end{longtable}
+\end{center}
+
+
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+	\begin{longtable}{| c | p{7cm} |}
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Use Case 9: Start Brainstorming}}\\
+		\hline\hline
+		\textit{Primary Actor} & Moderator\\
+		\hline
+		\textit{Stakeholders \& Interests} & Ein Moderator will eine neue Brainstorming-Session starten können. \\
+		\hline
+		\textit{Preconditions} & Der Moderator muss existent (UC3) sowie eingeloggt (UC1) sein. Des Weiteren muss eine Gruppe existieren (UC10), welche er erstellt hat. Zudem muss die Gruppe komplett sein (konfigurierte Anzahl an Participants sind in der Gruppe). \\
+		\hline
+		\textit{Post Conditions/Success Guarantee} & Alle Participants der Gruppe können aktualisieren und sehen die gestartete Runde. \\
+		\hline
+		\textit{Main Success Scenario/Basic Flow} & 
+		\begin{enumerate}[noitemsep]
+			\item Der Moderator clickt auf "Brainstorming starten" (o.Ä) auf der Gruppe, die er erstellt hat. 
+			\item Das System überprüft, dass alle Einstellungen korrekt sind und die korrekte Anzahl an Participants in der Gruppe sind. 
+			\item Das System zeigt dem Moderator an, dass die Session gestartet ist.
+			\item Der Moderator kann wie die normalen Participants Solutionfragments erfassen.
+		\end{enumerate}\\
+		\hline
+		\textit{Alternative Flows} & -\\
+		
+		\hline
+		
+		\textit{Frequency of Occurrence} & Oft, zählt zur Kernfunktionalität der Applikation.\\
+		
+		\hline
+	\end{longtable}
+\end{center}
+
+
+
 
 \paragraph{Abuse-Cases}
 %Abuse cases?
