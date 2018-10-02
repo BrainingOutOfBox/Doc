@@ -2,6 +2,8 @@
 
 \subsubsection{Funktionale Anforderungen}
 
+\paragraph{Brief Use-Cases}
+
 Im Folgenden ist das Use-Case-Diagramm dargestellt.
 \begin{figure}[h]
 	\centering
@@ -24,14 +26,32 @@ Jeder Use-Case hat den nachfolgend kurz (\textit{briefly}) beschriebenen  Funkti
 	\item[\textit{UC7: }View Results] Als Participant will ich, nachdem eine Brainstorming Session durchgeführt wurde, das Resultat meiner Gruppe einsehen können.
 	\item[\textit{UC8: }Create\\Solutionfragment] Als Participant will ich während einer Brainstorming Session ein Lösungsfragment erstellen und einreichen können. 
 	\item[\textit{UC9: }Start \\Brainstorming] Als Moderator will ich eine Brainstorming Session starten.
-	\item[\textit{UC10: }Delete Group] Als Moderator will ich eine Gruppe löschen können.
+	\item[\textit{UC10: }Create Group] Als Moderator will ich eine Gruppe erstellen können. 
+	\item[\textit{UC11: }Delete Group] Als Moderator will ich eine Gruppe löschen können.
 \end{basedescript}
 
-%Fully dressed
+\paragraph{Fully-Dressed Use-Cases}
 
+
+\paragraph{Abuse-Cases}
 %Abuse cases?
+Um einem Missbrauch der Applikation entgegenzuwirken, sind neben den Use-Cases auch Abuse-Cases definiert. Diese helfen, mit unangebrachtem Inhalt und unangebrachter Verwendung umzugehen.
+\begin{basedescript}{%
+		\desclabelstyle{\multilinelabel}
+		\desclabelwidth{4.5cm}}
+	\item[\textit{AC1: }Unangebrachte Lösungsfragmente] Ein Participant könnte unangebrachte Inhalte in einer Gruppe hinzufügen. Um dies zu verhindern, könnte eine die Applikation um eine Funktion erweitert werden, die es dem Moderator erlaubt, Benutzer auszuschliessen.
+\end{basedescript}
 
 %Sequence diagram
+\paragraph{Sequenzdiagramm}
+Der Ablauf der Kernlogik ist der Abbildung \ref{fig:seq-methode635} zu entnehmen. Darin ist der Prozess vom Erstellen der Gruppe (UC10) bis zum Abschliessen der Brainstorming Session modelliert.
+\begin{figure}[h]
+	\centering
+	\makebox[\textwidth][c]{\includegraphics[width=1.2\linewidth]{img/anforderungen/Seq-Methode635}}
+	\caption{Sequenzdiagramm}
+	\label{fig:seq-methode635}
+\end{figure}
+
 
 \subsubsection{Nicht-Funktionale Anforderungen}
 Beim Thema Nicht-Funktionale Anforderungen halten wir uns an die Standards ISO 9126\cite{ISO9126} bzw. dessen Nachfolger ISO 25010\cite{ISO9126_ISO25010}. Beide ISO-Normen sind sich sehr ähnlich und liefern eine gute Checkliste für jegliche Art von Systemanforderungen.
