@@ -175,11 +175,11 @@ Um einem Missbrauch der Applikation entgegenzuwirken, sind neben den Use-Cases a
 
 %Sequence diagram
 \paragraph{Sequenzdiagramm}
-Der Ablauf der Kernlogik ist der Abbildung \ref{fig:seq-methode635} zu entnehmen. Darin ist der Prozess vom Erstellen der Gruppe (UC10) bis zum Abschliessen der Brainstorming Session modelliert.
+Der Ablauf der Kernlogik ist der Abbildung \ref{fig:seq-methode635} zu entnehmen. Darin ist der Prozess vom Erstellen des BrainstormingTeams (UC10) bis zum Abschliessen des BrainstormingFinding modelliert.
 \begin{figure}[h]
 	\centering
 	\makebox[\textwidth][c]{\includegraphics[width=1.2\linewidth]{img/anforderungen/Seq-Methode635}}
-	\caption{Sequenzdiagramm}
+	\caption{Ablauf der Kernlogik}
 	\label{fig:seq-methode635}
 \end{figure}
 
@@ -190,16 +190,14 @@ Beim Thema Nicht-Funktionale Anforderungen halten wir uns an die Standards ISO 9
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{img/anforderungen/quality}
-	\caption[Anforderungskategorien nach ISO 25010]{Anforderungskategorien nach  ISO 25010}
+	\caption[Anforderungskategorien nach ISO 25010]{Anforderungskategorien nach  ISO 25010}\cite{ISO25010_Bild}
 	\label{fig:ISO 25010}
 \end{figure}
-
-%TODO Bild Link: https://blog.seibert-media.net/blog/2018/05/14/qualitaet-funktionale-und-nichtfunktionale-anforderungen-in-der-software-entwicklung/
 
 Diese Normen sind sehr umfangreich gestaltet. Wir werden uns daher auf die, für uns, wichtigsten Anforderungen konzentrieren. Um genaue und erfüllbare nicht-funktionale Anforderungen zu definieren, müssen die SMART-Kriterien \cite{SMART} erfüllt sein. 
 
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Wiederverwendbarkeit}]
-	\item[Ressourcennutzung] Die internen Ressourcen Kamera, Dateisystem dürfen nur bei effektivem Bedarf benützt werden. Die CPU-Ressourcen\-nutzung darf im Durchschnitt pro Minute maximal zu 40\% in Anspruch genommen werden.\footnote{Referenzsystem Android: Huawei P10 mit Android Version 8.0.0 mit Hisilicon Kirin 960 CPU und 4GB RAM}\footnote{Referenzsystem iOS: iPhone 6 mit iOS Version 12 mit Dual-core 1.4 GHz Typhoon CPU und 1GB RAM}
+	\item[Ressourcennutzung] Die internen Ressourcen Kamera, Dateisystem dürfen nur bei effektivem Bedarf benützt werden. Die CPU-Ressourcen\-nutzung darf pro Minute im Bereich von bis zu 40\% in Anspruch genommen werden.\footnote{Referenzsystem Android: Huawei P10 mit Android Version 8.0.0 mit Hisilicon Kirin 960 CPU und 4GB RAM}\footnote{Referenzsystem iOS: iPhone 6 mit iOS Version 12 mit Dual-core 1.4 GHz Typhoon CPU und 1GB RAM}
 	
 	\item[Bedienbarkeit] Wenn eine Aktion länger als 1-2s geht, soll dem User ein Wartesymbol angezeigt werden. 
 	
@@ -209,13 +207,13 @@ Diese Normen sind sehr umfangreich gestaltet. Wir werden uns daher auf die, für
 	
 	\item[Anpassbarkeit] Die Anpassung bestehender oder Integration neuer Brain\-storming-Methoden muss gewährleistet sein.
 	
-	\item[Installierbarkeit] Die Installation der Applikation auf einem Endgerät erfolgt durch das Ausführen eines *.apk oder *.app. Dieser Prozess soll unter 1 Minute geschehen.
+	\item[Installierbarkeit] Die Installation der Applikation auf einem Endgerät erfolgt durch das Ausführen eines *.apk oder *.ipa.\footnote{Eine Applikation auf einem Android Smartphone hat üblicherweise die Endung *.apk. Beim iPhone bzw. beim iOS haben die einzelnen Applikationen die Endung *.ipa.} Dieser Prozess soll unter 1 Minute geschehen.
 	
 	\item[Co-Existenz] Sollte zu einem späteren Zeitpunkt entschieden werden ein Web-Frontend zu programmieren, muss dieses co-existent mit der Xamarin Applikation existieren können.
 	
 	\item[Wiederherstellbarkeit] Im Falle eines fehlerhaften Features, muss es innerhalb eines Werktages möglich sein, die Applikation wieder auf den letzten funktionierenden Stand zurück zu holen und erneut zu deployen.	
 	
-	\item[Wiederverwendbarkeit] Die Auswertung von 'Duplicated Code' in SonarQube soll unter 8\% liegen. Dies deutet auf eine hohe Wiederverwendbarkeit hin, denn ansonsten müsste der Code kopiert werden. 
+	\item[Wiederverwendbarkeit] Die Auswertung von 'Duplicated Code' in SonarQube soll im Bereich zwischen 5-10\% \cite{Duplicated_Code} liegen. Dies deutet auf eine hohe Wiederverwendbarkeit hin, denn ansonsten müsste der Code kopiert werden. 
 	
 	%TODO: Referenz auf Use Cases
 	\item[Analysierbarkeit] Das Ausführen eines Use-Cases muss durch Analyse von Logfiles erkennbar sein.

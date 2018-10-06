@@ -1,1 +1,40 @@
 \subsection{Architekturentscheide}
+
+\subsubsection{Erste Erfahrungen mit der Methode 635}
+Wie in Kapitel \ref{subsub:erste_erfahrungen_mit_methode_635} beschrieben, tendiert der Mensch dazu, die Ideen der anderen Teilnehmer automatisch zu bewerten. Als mögliche Lösung wurde die Integration einer Bewertungsmöglichkeit beschrieben.
+
+
+Wir haben uns allerdings darauf geeinigt, dass wir die originale Version, also ohne die Möglichkeit für eine Wertung, als Vorlage nehmen und diese auch so in unserer Cross-Plattform Applikation umsetzen. 
+
+
+Die Integration einer Bewertungsmöglichkeit wird als optionales Feature angesehen und lediglich bei genügend Restzeit im Projekt umgesetzt.
+
+\subsubsection{Xamarin.Forms oder Xamarin native}
+%TODO warum haben wir uns für das Eine oder das Andere entschieden
+
+\subsubsection{Backend-Technologie}
+%TODO warum haben wir uns für das PlayFramework entschieden
+
+\subsubsection{Methode 635 als verteiltes System}
+Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die Kommunikation zwischen den einzelnen Teilnehmer, als verteiltes System zu konzipieren.
+
+
+Prof. Thomas Bocek, Professor für verteilte System an der Hochschule Rapperswil, hat uns allerdings davon abgeraten. Ein verteiltes System sei immer komplexer und komplizierter als ein Server/Client System. Für diese geringe Anzahl von Teilnehmern, welche prinzipiell nur Messages austauschen, lohnt es sich nicht ein verteiltes System zu bauen. 
+
+
+Daher haben wir uns für eine klassische Server/Client Architektur entschieden.
+
+\subsubsection{Kommunikation zwischen Server und App}
+Die Kommunikation zwischen dem zentralen Server und den Clients, also den Cross-Plattform Applikationen in unserem Fall, ist von grosser Bedeutung. Da die Clients meist hinter einer NAT \cite{NAT} agieren, müssen jegliche Anfragen an den Server von den Clients kommen.
+
+
+\textbf{Dazu ein kleines Beispiel}: Wenn ein Teilnehmer seine Ideen aufschreibt, fragt die Applikation im Hintergrund in regelmässigen Abständen den Server nach der verbleibenden Zeit für diese Runde ab.
+
+
+Auch nach der Abgabe der aufgeschriebenen Ideen an den Server, muss der Teilnehmer warten, bis er die Ideen bzw. das Blatt seines Nachbarn bekommt. Dafür muss die Applikation immer wieder den Server fragen, ob der Nachbar überhaupt sein Blatt bzw. seine Ideen abgegeben hat. Denn vorher kann der Teilnehmer auch nicht weitermachen.
+
+
+Wir haben uns daher für das stetige Abfragen von Informationen (Pulling) entschieden, da es eine einfache Variante darstellt. Zwar werden dadurch vermeidbare Requests an den Server gesendet, da aber die Anzahl an Teilnehmer bzw. die Ressourcennutzung des Backends in einem vertretbaren Rahmen liegt, ist diese Pulling-Variante völlig in Ordnung.  
+
+
+Andere Varianten der Kommunikation, wie Webhooks oder Websockets werden daher nicht weiter verfolgt.
