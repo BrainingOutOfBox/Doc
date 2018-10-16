@@ -155,9 +155,47 @@ Da Xamarin auf .Net bzw. C\# aufbaut, werden die Code Guidelines von .Net verwen
 \subsubsection*{Builden und testen der App}
 Für das automatisierte Builden und Testen nach einem Commit wird auf \href{https://appcenter.ms/orgs/BrainingOutOfBox/apps/BrainingOutOfBox-App}{Visual Studio App Center} von Microsoft gesetzt. Zum einen ermöglicht es eine einfache Integration von Github und zum anderen bringt es alles mit, um Xamarin Apps automatisch zu builden, testen und deployen. 
 
+\subsection{Zeitliche Planung}
+
+\subsubsection*{Phasen}
+In unserem Projekt verwenden wir die vier Phasen von Rational Unified Process \cite{RUP}. Innerhalb der einzelnen Phasen wenden wir allerdings das Konzept von SCRUM \cite{SCRUM} an.  
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Construction Phase}]
+	\item [Inception Phase] In der Inception Phase geht es hauptsächlich darum, Jira einzurichten und den Projektplan zu schreiben. Diese Phase beinhaltet den Sprint Inception-1.
+	\item [Elaboration Phase] Die Elaboration Phase umfasst die Sprints Elaboration-1 und Elaboration-2. Hier werden die Anforderungen an die Applikation definiert, die Vorstudie durchgeführt und weitere konzeptionelle Arbeiten durchgeführt. Am Ende der Phase müssen alle konzeptionellen Fragen geklärt sein. 
+	\item [Construction Phase] In der Phase der Construction geht es an die Umsetzung der Applikation. Hierfür sind 3.5 Sprints eingerechnet. Dafür stehen die Sprints Construction-1, Construction-2 und Construction-3 zur Verfügung.
+	\item [Transition Phase] In der letzen Phase werden alle abzugebende Dokumente nochmals durchgelesen und allenfalls überarbeitet. Dies geschieht im Sprint Transition-1.
+\end{description}
+
+\subsubsection*{Sprints}
+Ein einzelner Sprint dauert zwei Wochen. So stehen pro Woche insgesamt 32 Stunden für die Studienarbeit zur Verfügung. In unserem Projekt sind folgende Sprints geplant:
+
+\paragraph*{Inception-1}
+\begin{itemize}
+  \item Projektplan erstellen
+  \item Jira einrichten
+  \item einzelne Risikos einschätzen
+\end{itemize}
+
+\paragraph*{Elaboration-1}
+\begin{itemize}
+  \item Projektplan überarbeiten
+  \item NFA definieren
+  \item Methode 635 durchspielen
+  \item GUI Entwürfe 
+\end{itemize}
+
+\paragraph*{Elaboration-2}
+\begin{itemize}
+  \item Sequenzdiagramm definieren
+  \item Domain Model definieren
+  \item Proof-of-Concept erarbeiten
+\end{itemize}
+
+%TODO weitere Sprints schreiben
+
+
 \begin{landscape}
 	\thispagestyle{empty}
-	\subsection{Zeitliche Planung}
 	\label{subsec:timeline}
 		\begin{figure}[h]
 			\centering
