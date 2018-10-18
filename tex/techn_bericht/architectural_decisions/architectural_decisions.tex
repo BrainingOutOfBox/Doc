@@ -16,8 +16,8 @@ Die Integration einer Bewertungsmöglichkeit wird als optionales Feature angeseh
 %TODO warum haben wir uns für das PlayFramework entschieden
 % In Java geschrieben, viele Plugins verfügbar, non-blocking I/O, NO-SQL support,
 
-\subsubsection{Methode 635 als verteiltes System}
-Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die Kommunikation zwischen den einzelnen Teilnehmer, als verteiltes System zu konzipieren.
+\subsubsection{Methode 635 als Peer-to-Peer-System}
+Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die Kommunikation zwischen den einzelnen Teilnehmer, als Peer-to-Peer System \cite{Peer2Peer} zu konzipieren.
 
 
 Prof. Thomas Bocek, Professor für verteilte Systeme an der Hochschule Rapperswil, hat uns allerdings davon abgeraten. Ein verteiltes System sei immer komplexer und komplizierter als ein Server/Client System. Für diese geringe Anzahl von Teilnehmern, welche prinzipiell nur Messages austauschen, lohnt es sich nicht ein verteiltes System zu bauen. 
@@ -26,16 +26,15 @@ Prof. Thomas Bocek, Professor für verteilte Systeme an der Hochschule Rapperswi
 Daher haben wir uns für eine klassische Server/Client Architektur entschieden.
 
 \subsubsection{Kommunikation zwischen Server und App}
-Die Kommunikation zwischen dem zentralen Server und den Clients, also den Cross-Plattform Applikationen in unserem Fall, ist von grosser Bedeutung. Da die Clients meist hinter einer NAT \cite{NAT} agieren, müssen jegliche Anfragen an den Server von den Clients kommen.
+Die Kommunikation zwischen dem zentralen Server und den Clients, also den Cross-Plattform Applikationen in unserem Fall, ist von grosser Bedeutung. Wegen der Problematik der Network Address Translation kurz NAT \cite{NAT} kann diese prinzipiell auf zwei Arten erfolgen: Entweder man verwendet Websockets \cite{WebSockets}, welche eine permanente Verbindung zwischen Server und Client öffnen oder die Kommunikation beginnt ausschliesslich beim Client. 
 
 
-\textbf{Dazu ein kleines Beispiel}: Wenn ein Teilnehmer seine Ideen aufschreibt, fragt die Applikation im Hintergrund in regelmässigen Abständen den Server nach der verbleibenden Zeit für diese Runde ab.
+Wir haben uns für das stetige Abfragen von Informationen (Polling) entschieden, da es eine einfache Variante darstellt. Zwar werden dadurch vermeidbare Requests an den Server gesendet, da aber die Anzahl an Teilnehmer bzw. die Ressourcennutzung des Backends in einem vertretbaren Rahmen liegt, ist diese Polling-Variante völlig in Ordnung.  
+
+\textbf{Zwei Beispiele für Polling in der Applikation}: Wenn ein Teilnehmer seine Ideen aufschreibt, fragt die Applikation im Hintergrund in regelmässigen Abständen den Server nach der verbleibenden Zeit für diese Runde ab.
 
 
 Auch nach der Abgabe der aufgeschriebenen Ideen an den Server, muss der Teilnehmer warten, bis er die Ideen bzw. das Blatt seines Nachbarn bekommt. Dafür muss die Applikation immer wieder den Server fragen, ob der Nachbar überhaupt sein Blatt bzw. seine Ideen abgegeben hat. Denn vorher kann der Teilnehmer auch nicht weitermachen.
-
-
-Wir haben uns daher für das stetige Abfragen von Informationen (Pulling) entschieden, da es eine einfache Variante darstellt. Zwar werden dadurch vermeidbare Requests an den Server gesendet, da aber die Anzahl an Teilnehmer bzw. die Ressourcennutzung des Backends in einem vertretbaren Rahmen liegt, ist diese Pulling-Variante völlig in Ordnung.  
 
 
 Andere Varianten der Kommunikation, wie Webhooks oder Websockets werden daher nicht weiter verfolgt.
