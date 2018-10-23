@@ -13,8 +13,15 @@ Die Integration einer Bewertungsmöglichkeit wird als optionales Feature angeseh
 %TODO warum haben wir uns für das Eine oder das Andere entschieden
 
 \subsubsection{Backend-Technologie}
-%TODO warum haben wir uns für das PlayFramework entschieden
-% In Java geschrieben, viele Plugins verfügbar, non-blocking I/O, NO-SQL support,
+Neben den vielen Vorteilen, wie der schlanken und zustandslosen Architektur des Play Frameworks, dem asynchronen und nicht-blockierenden Verhalten und den vielen unterstützten Bibliotheken, haben wir uns hauptsächlich dafür entschieden, weil wir in anderen Projekten schon sehr gute Erfahrungen mit dem Play Framework gemacht haben.
+
+Ein weiterer Grund bestand darin, dass das Play Framework nicht nur in Scala sondern auch in Java geschrieben ist. Mit Java kennen wir uns beide gut aus und mussten uns so keine neue Programmiersprache aneignen.
+
+Da wir uns schon relativ früh für eine MongoDB als Datenbanksystem entschieden hatten, viel die Wahl für das Play Framework erst recht, als wir einen asynchronen MongoDB-Treiber für Java gefunden hatten.
+
+\subsubsection{MongoDB als Datenbanksystem}
+%TODO sollen wir noch ein Kapitel einfügen und erklären warum wir uns für MongoDB entschieden haben?
+%No-SQL DB einfacher skalierbar, hoch verfügbar, CAP & BASE Theorem etc.
 
 \subsubsection{Methode 635 als Peer-to-Peer-System}
 Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die Kommunikation zwischen den einzelnen Teilnehmer, als Peer-to-Peer System \cite{Peer2Peer} zu konzipieren.
