@@ -10,6 +10,23 @@ Wir haben uns allerdings darauf geeinigt, dass wir die originale Version, also o
 Die Integration einer Bewertungsmöglichkeit wird als optionales Feature angesehen und lediglich bei genügend Restzeit im Projekt umgesetzt.
 
 \subsubsection{Xamarin.Forms oder Xamarin native}
+Für diesen Entscheid galt es zu evaluieren, welche User Controls für unsere Applikation die exotischsten sind. Dies, weil Xamarin.Forms eine Menge an Standard-Controls anbietet, die vom Framework selber in das jeweilige Betriebssystem konvertiert werden. Sind alle vorgesehenen Benutzerelemente in Forms enthalten, sparen wir uns die Zeit, betriebssystemspezifische Elemente zu entwickeln. 
+
+Für unser Projekt haben wir folgende Benutzerelemente als exotisch definiert:
+\begin{itemize}
+	\item Canvas Control für Zeichnen einer Idee
+	\item Camera Funktion für das Erkennen von QR-Codes
+	\item Verarbeitung und Generierung von QR-Codes
+\end{itemize}
+
+Nach einer kleinen Recherche stellte sich heraus, dass sich ein Canvas View von Google namens SkiaSharp \cite{skiaSharp} eignet. Darauf lässt sich gemäss der Dokumentation zeichnen sowie definierte Formen einfügen. Dies könnte auch für eine Erweiterung spannend sein, in der Patterns in UML als Vorlage angeboten werden können.
+
+Für die Kamera-Funktionalität steht ein NuGet-Packet (Xam.Media.Plugin \cite{xam-media-plugin}) bereit, das uns diese Arbeit abnehmen wird.
+
+Das Generieren und Lesen der QR-Codes ist an sich kein Problem von Xamarin.Forms, denn grundsätzlich müssen die von der Kamera generierten Files eingelesen und ins entsprechende QR-Code-Tool eingefügt werden. Hierfür eignet sich das NuGet ZXing.Net (\cite{zxing.net}). 
+
+Es stellte sich als relativ rasch heraus, dass die gewünschten Funktionlitäten in Xamarin.Forms enthalten sind und uns das individuelle Entwickeln dadurch abgenommen wird.
+
 %TODO warum haben wir uns für das Eine oder das Andere entschieden
 
 \subsubsection{Backend-Technologie}
