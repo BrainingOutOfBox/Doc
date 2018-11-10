@@ -1,14 +1,14 @@
 \subsection{Herausforderungen}
-Hier sind besonders erwähnenswerte Herausforderungen und Hürden beschrieben, die sich im Verlaufe des Projektes gestellt haben. Dies mit dem Ziel, dass andere Software Ingenieure oder Interessierte aus unseren Schwierigkeiten lernen können.
+Hier sind besonders erwähnenswerte Herausforderungen und Hürden beschrieben, die sich im Verlaufe des Projektes gestellt haben. Es soll anderen Software Ingenieuren oder Interessierten helfen  aus unseren Schwierigkeiten zu lernen. 
 
 \subsubsection{HTTPS REST Schnittstelle in CI/CD aufsetzen}
-Während dem Bauen des Prototyps in der Evaluation stellten wir fest, dass das Abfragen unserer Backend-Schnittstelle auf Android wie gewünscht funktionierte, jedoch warf die Applikation beim Ausführen auf iOS eine Exception. Diese sagte, dass iOS keine Verbindungen zu unverschlüsselten Webseiten mehr zulässt. Daher war der Fall klar, dass dies noch aufgesetzt werden muss.
+Während dem Entwickeln des Prototyps in der Evaluation stellten wir fest, dass das Abfragen unserer Backend-Schnittstelle auf Android wie gewünscht funktionierte, jedoch warf die Applikation beim Ausführen auf iOS eine Exception. Diese sagte, dass iOS keine Verbindungen zu unverschlüsselten Webseiten mehr zulässt. Daher war der Fall klar, dass dies noch aufgesetzt werden muss.
 
 Nach kurzen Recherchen haben wir für das Erstellen und Validieren des Zertifikates auf Let's Encrypt \cite{letsencrypt} gewählt, gerade deshalb weil eine ausführliche Dokumentation und eine rasche Generierung möglich ist. 
 
 Auch mit dem verwendeten Play Framework sollte das Aufsetzen der HTTPS Site kein Problem darstellen, es sollte mit einem Parameter beim Start der Applikation gut möglich sein. 
 
-Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich lief, gilt es, das Gesamte noch in den Build-Prozess einzubauen. Dabei kam das Problem auf, dass der Pfad zum Keystore, der das Let's Encrypt-Zertifikat beinhaltet, nicht gültig war. Nach mehrmaligem, gründlichem Überprüfen des Pfades und neu Builden, wurden immernoch Exceptions geworfen.
+Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich lief, galt es, das Gesamte noch in den Build-Prozess einzubauen. Dabei kam das Problem auf, dass der Pfad zum Keystore, der das Let's Encrypt-Zertifikat beinhaltet, nicht gültig war. Nach mehrmaligem, gründlichem Überprüfen des Pfades und neu Builden, wurden immer noch Exceptions geworfen.
 
 Wir haben keinen Anhaltspunkt, was der Fehler sein könnte, denn werden die genau gleichen Befehle auf dem Backend-Server direkt ausgeführt, funktioniert die Applikation einwandfrei auf HTTPS. Sobald es aber über den Build-Server läuft, findet er den Pfad zum Keystore nicht mehr.
 
