@@ -1,17 +1,19 @@
 \subsection{Ergebnisse}
-Das Kapitel der Ergebnisse befasst sich mit der konkreten Umsetzung der Xamarin Applikation und dem PlayFramework. Dabei werden die wichtigsten Funktionen der jeweiligen Bestandteile genauer erklärt und beim Xamarin App zusätzlich noch eine kurze Retrospektive auf geplantes Design und effektiver Umsetzung gegeben.
+Das Kapitel der Ergebnisse befasst sich mit der konkreten Umsetzung der Xamarin Applikation und dem PlayFramework. Wir haben uns dabei ganz konkret für die nachfolgenden Code-Beispiele entschieden. Der Grund dafür ist, dass diese entweder den typischen Aufbau einer Methode zeigen oder wie das Listing \ref{watcher}, eine Kernlogik darstellen. 
+Bei den Ergebnissen der Xamarin App zeigen wir zusätzlich noch eine kurze Retrospektive auf geplantes Design und effektiver Umsetzung des GUIs.
 
 Zur besseren Übersicht wurde der Code vereinzelt gekürzt. Dies ist durch 3 Punkte (...) gekennzeichnet.
 
 \subsubsection{Implementierung des PlayFrameworks}
-Die Umsetzung des Backends basiert auf dem PlayFramework. Die Gründe für diesen Entscheid kann in Kapitel \ref{vorstudie} nachgelesen werden. 
+Die Umsetzung des Backends basiert auf dem PlayFramework. Die Gründe für diesen Entscheid können in Kapitel \ref{vorstudie} nachgelesen werden. 
 
-Um die Daten permanent zu speichern, besitzt das PlayFramework eine Anbindung an eine MongoDB Instanz. Die Anbindung wurde mit dem MongoDB Async Driver für Java \cite{MongoDBAsyncDriver} realisiert. Die Implementation ist daher auch in Java geschrieben. Für die Dokumentation des Backends haben wir Swagger \cite{swagger} verwendet.
+Um die Daten permanent zu speichern, besitzt das PlayFramework eine Anbindung an eine MongoDB Instanz. Die Anbindung wurde mit dem MongoDB Async Driver für Java \cite{MongoDBAsyncDriver} realisiert. Die Implementation ist daher auch in Java geschrieben. Für die Dokumentation des Backends verwendeten wir Swagger \cite{swagger}.
 
 \paragraph*{ParticipantController.java}
+Die nachfolgenden Listings zeigen einen Ausschnitt aus der \texttt{ParticipantController.java} Klasse. Diese befindet sich in der LogicComponent (Abbildung \ref{fig:architektur-methode635}) vom PlayFramework.
 
 \lstset{language=JAVA, showstringspaces=false, frame=single, captionpos=b, label=createParticipant, breaklines=true, numbers=left}
-\begin{lstlisting}[caption={Participant erstellen}]
+\begin{lstlisting}[caption={Participant erstellen}, label=participantErstellen]
 public Result createParticipant(){
 
     JsonNode body = request().body().asJson();
@@ -23,27 +25,27 @@ public Result createParticipant(){
             	body.hasNonNull("firstname") &&
             	body.hasNonNull("lastname")) {
 
-        Participant participant = new Participant(body.get("username").asText(), body.get("password").asText(), body.get("firstname").asText(), body.get("lastname").asText());
+    Participant participant = new Participant(body.get("username").asText(), body.get("password").asText(), body.get("firstname").asText(), body.get("lastname").asText());
 
-        participantCollection.insertOne(participant, new SingleResultCallback<Void>() {
-            @Override
-            public void onResult(Void result, Throwable t) {
-                Logger.info("Inserted Participant!");
-            }
-        });
+    participantCollection.insertOne(participant, new SingleResultCallback<Void>() {
+        @Override
+        public void onResult(Void result, Throwable t) {
+            Logger.info("Inserted Participant!");
+        }
+    });
 
-        return ok(Json.toJson(new SuccessMessage("Success", "Participant successfully inserted")));
+    return ok(Json.toJson(new SuccessMessage("Success", "Participant successfully inserted")));
     }
 
     return forbidden(Json.toJson(new ErrorMessage("Error", "json body not as expected")));
 }
 \end{lstlisting}
 
-Bei der Methode für das Erstellen von Participants, wird zuerst geprüft, ob ein HTML-Body existiert. Ist dies nicht der Fall, wird ein HTTP-Response Status-Code (Zeile 24) zurückgesendet.
+Bei der Methode für das Erstellen von Participants, prüft das Framework zuerst, ob ein HTML-Body existiert. Ist dies nicht der Fall, sendet es ein HTTP-Response Status-Code (Zeile 24) zurück.
 
-Existiert ein HTML-Body, wird dieser auf die Existenz der Felder \textit{username}, \textit{password}, \textit{firstname} und \textit{lastname} geprüft (Zeile 7-10). Daraus wird als nächstes ein \texttt{participant} erstellt (Zeile 12) und mittels  \texttt{insertOne} in die \texttt{participant\-Collection} gespeichert (Zeile 14).
+Existiert ein HTML-Body, wird dieser auf die Existenz der Felder \textit{username}, \textit{password}, \textit{firstname} und \textit{lastname} geprüft (Zeile 7-10). Daraus erstellt das Framework als nächstes ein \texttt{participant} (Zeile 12), welcher mittels  \texttt{insertOne} in die \texttt{participant\-Collection} gespeichert wird (Zeile 14).
 
-Zulezt wird der Status-Code 200 mit einer Nachricht an den Absender zurück gesendet.
+Zuletzt sendet das PlayFramework eine Antwort mit dem HTTP-Status Code 200 und einer Nachricht an den Absender. 
 
 \begin{lstlisting}[caption={Login}]
 public Result login() throws UnsupportedEncodingException, ExecutionException, InterruptedException {
@@ -70,25 +72,20 @@ if (body.hasNonNull("username") && body.hasNonNull("password")) {
         result.putPOJO("participant", future.get());
         result.put("access_token", getSignedToken(7l));
         return ok(result);
-    } else {
-       ...
-    }
-
-} else {
-    ...
-}
-
+    } else {...}
+} else {...}
 }
 \end{lstlisting}
 
-Für das Login eines Participants wird auch hier zuerst nach der Existenz der Felder \textit{username} und \textit{password} im HTML-Body geschaut (Zeile 3). Im nächsten Schritt wird die Datenbank nach einem Participant mit den angegebenen Werten durchsucht (Zeile 6-8). 
+Für das Login eines Participants schaut auch hier zuerst das Framework im HTML-Body nach der Existenz der Felder \textit{username} und \textit{password} (Zeile 3). Im nächsten Schritt durchsucht es die Datenbank nach einem Participant mit den angegebenen Werten (Zeile 6-8). 
 
-Da wir einen asynchronen Treiber verwenden, benötigen wir ein \texttt{CompletableFuture}, um das Resultat der Abfrage darin zu speichern und um mittels \texttt{future.get()} darauf zugreifen zu können (Zeile 20).
+Da wir einen asynchronen Treiber verwenden, benötigen wir ein \texttt{CompletableFuture}, um das Resultat der Abfrage darin abzuspeichern und um mittels \texttt{future.get()} darauf zugreifen zu können (Zeile 20).
 
-Am Ende wird neben dem gefundenen \textit{participant} noch ein \textit{JWT-Token} dem Resultat angefügt (Zeile 21-24).
+Am Ende wird dem Resultat neben dem gefundenen \textit{participant} noch ein \textit{JWT-Token} angefügt (Zeile 21-24).
 
 \paragraph*{TeamController.java}
-\begin{lstlisting}[caption={Einem Team beitreten}]
+Das Listing \ref{teamBeitreten} zeigt einen Ausschnitt aus der \texttt{TeamController.java} Klasse. Auch diese befindet sich in der LogicComponent (Abbildung \ref{fig:architektur-methode635}) vom PlayFramework.
+\begin{lstlisting}[caption={Einem Team beitreten}, label=teamBeitreten]
 public Result joinBrainstormingTeam(String teamIdentifier) throws ExecutionException, InterruptedException {
 ...
 if (brainstormingTeam!= null && brainstormingTeam.getNrOfParticipants() > brainstormingTeam.getCurrentNrOfParticipants() && brainstormingTeam.joinTeam(participant)) {
@@ -114,7 +111,8 @@ Dieses Beispiel soll zeigen, wie mit dem MongoDB Async Driver ein Eintrag mittel
 Wie auch schon bei der \texttt{find} Methode, kennzeichnet der erste Parameter das Dokument, welches man aktualisieren möchte. Der zweite Parameter steht für die Felder und deren neuen Werte und der dritte und letzte Parameter ist wieder der \texttt{SingleResultCallback} und beschreibt wie das Resultat weiter prozessiert wird. All dies ist auf Zeile 5-8 zu finden.
 
 \paragraph*{FindingController.java}
-\begin{lstlisting}[caption={Watcher für BrainstormingFinding}]
+Das Listing \ref{watcher} zeigt einen Ausschnitt aus der \texttt{FindingController.java} Klasse. Wie auch schon die vorherigen Klassen, befindet sich auch diese in der LogicComponent (Abbildung \ref{fig:architektur-methode635}) vom PlayFramework.
+\begin{lstlisting}[caption={Watcher für BrainstormingFinding}, label=watcher]
 private void startWatcherForBrainstormingFinding(String identifier){
 
 ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -163,4 +161,5 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
         return nextRound(findingIdentifer);
 }
 \end{lstlisting}
+
 \subsubsection{Implementierung der Xamarin App}
