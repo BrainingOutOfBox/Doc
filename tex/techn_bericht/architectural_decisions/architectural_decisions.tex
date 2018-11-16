@@ -45,7 +45,7 @@ Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die
 Prof. Thomas Bocek, Professor für verteilte Systeme an der Hochschule Rapperswil, hat uns allerdings davon abgeraten. Ein verteiltes System sei immer komplexer und komplizierter als ein Server/Client System. Für diese geringe Anzahl von Teilnehmern, welche prinzipiell nur Messages austauschen, lohnt es sich nicht ein verteiltes System zu bauen. 
 
 
-Daher haben wir uns für eine klassische Server/Client Architektur entschieden.
+Daher haben wir uns für eine klassische Server/Client Architektur entschieden. Andere Varianten der Kommunikation, wie Webhooks oder Websockets werden daher nicht weiter verfolgt.
 
 \subsubsection{Kommunikation zwischen Server und App}
 Die Kommunikation zwischen dem zentralen Server und den Clients, also den Cross-Plattform Applikationen in unserem Fall, ist von grosser Bedeutung. Wegen der Problematik der Network Address Translation kurz NAT \cite{NAT} kann diese prinzipiell auf zwei Arten erfolgen: Entweder man verwendet Websockets \cite{WebSockets}, welche eine permanente Verbindung zwischen Server und Client öffnen oder die Kommunikation beginnt ausschliesslich beim Client. 
@@ -58,5 +58,7 @@ Wir haben uns für das stetige Abfragen von Informationen (Polling) entschieden,
 
 Auch nach der Abgabe der aufgeschriebenen Ideen an den Server, muss der Teilnehmer warten, bis er die Ideen bzw. das Blatt seines Nachbarn bekommt. Dafür muss die Applikation immer wieder den Server fragen, ob der Nachbar überhaupt sein Blatt bzw. seine Ideen abgegeben hat. Denn vorher kann der Teilnehmer auch nicht weitermachen.
 
+\textbf{Was heisst das in Zahlen:}
+Beim Szenario 1 (verbleibende Zeit abfragen) sendet die Applikation pro Sekunde einen Request. Wenn wir bei der Standardmethode von 6 Teilnehmern bleiben, wären das 6 Request pro Sekunde. Wenn wir nun noch annehmen, dass 50 gleichzeitige Ausführungen stattfinden, ergibt das 300 Requests pro Sekunde.
 
-Andere Varianten der Kommunikation, wie Webhooks oder Websockets werden daher nicht weiter verfolgt.
+%https://www.playframework.com/documentation/2.6.x/Highlights25
