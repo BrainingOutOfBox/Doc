@@ -53,12 +53,26 @@ Die Kommunikation zwischen dem zentralen Server und den Clients, also den Cross-
 
 Wir haben uns für das stetige Abfragen von Informationen (Polling) entschieden, da es eine einfache Variante darstellt. Zwar werden dadurch vermeidbare Requests an den Server gesendet, da aber die Anzahl an Teilnehmer bzw. die Ressourcennutzung des Backends in einem vertretbaren Rahmen liegt, ist diese Polling-Variante völlig in Ordnung.  
 
-\textbf{Zwei Beispiele für Polling in der Applikation}: Wenn ein Teilnehmer seine Ideen aufschreibt, fragt die Applikation im Hintergrund in regelmässigen Abständen den Server nach der verbleibenden Zeit für diese Runde ab.
+\textbf{Zwei Beispiele für Polling in der Applikation}: Wenn ein Teilnehmer seine Ideen aufschreibt, fragt die Applikation den Server im Hintergrund in regelmässigen Abständen nach der verbleibenden Zeit für diese Runde ab.
 
 
-Auch nach der Abgabe der aufgeschriebenen Ideen an den Server, muss der Teilnehmer warten, bis er die Ideen bzw. das Blatt seines Nachbarn bekommt. Dafür muss die Applikation immer wieder den Server fragen, ob der Nachbar überhaupt sein Blatt bzw. seine Ideen abgegeben hat. Denn vorher kann der Teilnehmer auch nicht weitermachen.
+Auch nach der Abgabe der aufgeschriebenen Ideen an den Server, muss der Teilnehmer warten, bis er die Ideen bzw. das Blatt seines Nachbarn bekommt. Dafür muss die Applikation immer wieder den Server fragen, ob der Nachbar überhaupt sein Blatt bzw. seine Ideen abgegeben hat. Bevor dies nicht geschehen ist, kann der Teilnehmer auch nicht weitermachen.
 
-\textbf{Was heisst das in Zahlen:}
-Beim Szenario 1 (verbleibende Zeit abfragen) sendet die Applikation pro Sekunde einen Request. Wenn wir bei der Standardmethode von 6 Teilnehmern bleiben, wären das 6 Request pro Sekunde. Wenn wir nun noch annehmen, dass 50 gleichzeitige Ausführungen stattfinden, ergibt das 300 Requests pro Sekunde.
 
-%https://www.playframework.com/documentation/2.6.x/Highlights25
+\textbf{Begründung in Zahlen:}
+Bei diesen beiden Szenarien sendet die Applikation pro Sekunde einen Request an den Server. Wenn wir bei der Standardmethode von 6 Teilnehmern bleiben, wären das 6 Request pro Sekunde. Wenn wir nun noch annehmen, dass 50 gleichzeitige Ausführungen stattfinden, ergibt das 300 Requests pro Sekunde für eines der beiden Szenarien.
+
+
+Laut den Release-Informationen zur Version 2.5 von Play \cite{Play25} ist das PlayFramework in der Lage 60'000 Requests pro Sekunde zu verarbeiten.
+
+
+Nehmen wir nun diese 60'000 Requests als Basis für unsere Berechnung, entsprechen unsere 300 Requests gerade einmal 0.5\% der möglichen 60'000 Requests. Für beide Szenarien entsprechend das Doppelte, also 1\%.
+
+\[\frac{300Requests}{1Second}=\frac{1Request}{1Second}*6Participants *50Brainstormings\]
+\[0.5\%= \frac{\frac{300Requests}{1Second} * 100}{\frac{60000Requests}{1Second}} = \frac{300 * 100}{60000}\]
+
+\textbf{Fazit:} Diese kleine Rechnung verdeutlich schon ziemlich stark, dass die Variante mit dem Polling das PlayFramework in keinster Weise an dessen Limit bringt. Selbst wenn die Anzahl an Teilnehmern oder gleichzeitigen Ausführungen erhöht wird, ist das PlayFramework im Stande die eingehenden Requests noch zu verarbeiten. Auch andere gleichzeitige Aufrufe an das PlayFramework können dann noch ausgeführt werden.
+
+Sollte es dennoch jemals zu einer zu starken Ressourcennutzung durch das Polling kommen, könnte der Algorithmus so angepasst werden, dass dieser nicht jede Sekunde das Backend z.B. nach der verbleibenden Zeit abfragt sondern bei viel verbleibender Zeit nur alle 30 Sekunden und bei wenig verbleibender Zeit jede Sekunde.
+
+Auf diese Weise kann die Anzahl an Requests drastisch reduziert werden.
