@@ -36,8 +36,15 @@ Ein weiterer Grund bestand darin, dass das PlayFramework nicht nur in Scala sond
 Da wir uns schon relativ früh für eine MongoDB als Datenbanksystem entschieden hatten, viel die Wahl für das Play Framework erst recht, als wir einen asynchronen MongoDB-Treiber für Java gefunden hatten.
 
 \subsubsection{MongoDB als Datenbanksystem}
-%TODO sollen wir noch ein Kapitel einfügen und erklären warum wir uns für MongoDB entschieden haben?
-%No-SQL DB einfacher skalierbar, hoch verfügbar, CAP & BASE Theorem etc.
+MongoDB (abgeleitet von humongous) ist eine dokumentorientierte \cite{MonogDBWikipedia}, einfache, dynamische und skalierbare NoSQL Datenbank \cite{MonogDBDZone}, welche von der MongoDB Inc. entwickelt wird \cite{MonogDB}. 
+
+Die Basis für das Speichern von Informationen bilden die sogenannten Documents. Die Datenobjekte werden in separaten Documents innerhalb einer Collection (anders als bei traditionellen Relationalen Datenbanken in Spalten und Zeilen) gespeichert \cite{MonogDBDZone}. Mit den Documents können zudem  hierarchische Strukturen und Relationen sehr einfach gespeichert werden.
+
+Der Vorteil einer MongoDB Datenbank liegt darin, dass zusammengehörige Informationen zusammen in einem Document gespeichert werden. Dies ermöglicht einen schnellen Zugriff auf die Daten mittels der MongoDB Query Language. Da MongoDB zudem ohne Schemas auskommt, ist es nicht nötig, die Datenbank offline zu nehmen, wenn man ein neues Feld einfügen möchte \cite{MonogDB}.
+
+Weitere Vorteile sind laut \href{DZone.com}{DZone.com} die hohe Performance, Verfügbarkeit (durch Replikas) und Skalierung (durch Sharding). Da alle Informationen zusammen in einem Document gespeichert sind, sind auch keine Joins zu anderen Tabellen notwendig. Auch unterstützt MongoDB Funktionen für die Speicherung von Geoinformationen \cite{MonogDBDZone}.
+
+Der Hauptgrund warum wir uns für MongoDB als Datenbanksystem entschieden haben, war die Tatsache, dass alle zusammengehörigen Informationen in einem Document abgelegt werden können. Auch die Möglichkeit hierarchische Strukturen (bei uns die \textit{Brainsheets}, \textit{Brainwaves} und \textit{Ideas}) einfach zu Speichern, hat uns viel Zeit erspart.
 
 \subsubsection{Methode 635 als Peer-to-Peer-System}
 Wir haben uns auch überlegt, die Cross-Plattform Applikation d.h. vor allem die Kommunikation zwischen den einzelnen Teilnehmer, als Peer-to-Peer System \cite{Peer2Peer} zu konzipieren.
