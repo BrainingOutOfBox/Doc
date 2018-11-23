@@ -13,3 +13,5 @@ Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich l
 Wir haben keinen Anhaltspunkt, was der Fehler sein könnte, denn werden die genau gleichen Befehle auf dem Backend-Server direkt ausgeführt, funktioniert die Applikation einwandfrei auf HTTPS. Sobald es aber über den Build-Server läuft, findet er den Pfad zum Keystore nicht mehr.
 
 Als Work-Around haben wir eine \texttt{CustomSslEngineProvider} geschrieben, der den Pfad zum Keystore direkt im Code beinhaltet. Darauf hat Puppet keinen Einfluss und die Applikation funktioniert wie gewünscht.
+
+%TODO Herausforderung mit angedachtem Layout beschreiben. War so nicht umsetzbar.
