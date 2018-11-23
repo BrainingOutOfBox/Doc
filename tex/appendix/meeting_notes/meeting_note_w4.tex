@@ -1,0 +1,160 @@
+\hypertarget{meeting-notes-11.10.2018}{%
+\section*{Meeting notes 11.10.2018}\label{meeting-notes-11.10.2018}}
+
+\hypertarget{anwesende}{%
+\subsection*{Anwesende}\label{anwesende}}
+
+\begin{itemize}
+
+\item
+  Prof. Dr. Olaf Zimmermann
+\item
+  Elias Brunner
+\item
+  Oliver Dias
+\end{itemize}
+
+\hypertarget{agenda}{%
+\subsection*{Agenda}\label{agenda}}
+
+\hypertarget{aufgabenstellung}{%
+\subsubsection*{Aufgabenstellung}\label{aufgabenstellung}}
+
+\begin{itemize}
+
+\item
+  Einzelne Punkte besprechen; Was heisst das konkret
+\item
+  Links anstatt Video
+\item
+  Notiz an uns: im Projektplan einen Dokumentenplan erstellen. Welche
+  Dokumente müssen abgegeben werden.
+\item
+  Aufgabenstellung dev. festlegen
+\end{itemize}
+
+\textbf{Entscheide:}
+
+\begin{itemize}
+
+\item
+  Punkte können protokoiert werden (lassen sich so nicht ausarbeiten wie
+  geschrieben) oder ganz gelöscht werden.
+\item
+  Hiermit halten wir fest, dass die entgültige Abgabe (App) nicht
+  komplett ortsunabhänig sein wird und auch die Teilnehmer ihre
+  Lösungsvorschläge nicht zeitunabhängig erarbeiten können.
+\end{itemize}
+
+\hypertarget{review-domain-modell}{%
+\subsubsection*{Review Domain Modell}\label{review-domain-modell}}
+
+\begin{itemize}
+
+\item
+  Bei der Beschreibung \grqq erweiterbar\grqq{} ersetzen -\textgreater{} wie z.B.
+  (sehen wir) ...
+\end{itemize}
+
+\hypertarget{review-mockup}{%
+\subsubsection*{Review Mockup}\label{review-mockup}}
+
+\begin{itemize}
+
+\item
+  Soll die Länge der Texte beschränkt werden? (besseres UX)
+\item
+  Soll es Highlighting der Texte geben?
+\item
+  Landscape oder Portrait für die Screens?
+\item
+  Gute User Meldungen (Rückmeldungen) Feedback geben -\textgreater{}
+  Beim Vorgänger Blatt leer -\textgreater{} Dein Vorgänger hat nichts
+  geschrieben
+\item
+  New Brainstroming statt New Problem
+\item
+  Number of Participants -\textgreater{} first come first serve;
+  Irgendwo schreiben
+\item
+  Sprache für UI soll Englisch sein aber die Möglichkeit bieten auf
+  ander Sprachen zu wechseln
+\item
+  Soll zu Beginn die Möglihckeit bestehen, dass der Moderator zuerst
+  eine Begrüssung macht. Er erklärt die Methode (Spielregeln erklären)
+  zuerst.
+\end{itemize}
+
+\hypertarget{architekturfragen}{%
+\subsubsection*{Architekturfragen}\label{architekturfragen}}
+
+\begin{itemize}
+
+\item
+  Logische Schichtenarchitektur für das Gesamtsystem oder
+  Backend/Frontend separat?
+\end{itemize}
+
+\textbf{Entscheide}:
+\begin{itemize}
+
+\item
+  Zuerst eine Sicht der Schichten zu einem späteren Zeitpunkt
+  verfeinern.
+\item
+  Client-Server Cut definieren
+\item
+  Timer -\textgreater{} Tier 1 Timer (TimerClient), Tier2 Timer
+  (TimerSync) -\textgreater{} Distributed Application Kernel
+\item
+  BLL: Use Cases und DomainModell sind Inputs -\textgreater{} ein
+  Diagramm,
+\item
+  Presentation Layer: BrainstromingFindingView, BrainsheetView,
+  BrainwaveView, etc.
+\end{itemize}
+
+\hypertarget{prototype}{%
+\subsubsection*{Prototype}\label{prototype}}
+
+\begin{itemize}
+
+\item
+  Als erstes das Timemanagement (BrainwaveFindings) umsetzen
+\end{itemize}
+
+\hypertarget{kommunikation-zwischen-server-und-app}{%
+\subsubsection*{Kommunikation zwischen Server und
+App}\label{kommunikation-zwischen-server-und-app}}
+
+\begin{itemize}
+
+\item
+  NAT besser umschreiben auf IP-Ebene
+\item
+  NAT ist zu knapp bessere Umschreibung
+\item
+  Firewalls, Authenication-Proxies sind eher das Problem
+\end{itemize}
+
+\hypertarget{typo}{%
+\subsubsection*{Typo}\label{typo}}
+
+\begin{itemize}
+
+\item
+  Polling nicht Pulling
+\item
+  4.7.4 Titel zu Peer zu Peer ändern
+\end{itemize}
+
+\hypertarget{aufgaben-bis-nachstes-meeting}{%
+\subsection*{Aufgaben bis nächstes
+Meeting}\label{aufgaben-bis-nachstes-meeting}}
+
+\hypertarget{prof.-dr.-olaf-zimmermann}{%
+\subsubsection*{Prof. Dr. Olaf
+Zimmermann}\label{prof.-dr.-olaf-zimmermann}}
+
+\hypertarget{elias-ux5cux26-oli}{%
+\subsubsection*{Elias \& Oli}\label{elias-ux5cux26-oli}}
