@@ -163,7 +163,7 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
 \end{lstlisting}
 
 \subsubsection{Implementierung der Xamarin App}
-Um den ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
+Um ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
 
 \begin{lstlisting}[label=register-vm,caption=Verknüpfung von View mit ViewModel in Prism.Forms]
 containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
@@ -220,7 +220,7 @@ Einige der erwähnten Komponenten können der Abbildung \ref{fig:brainstorming-o
 
 
 
-Für das Abfrage der verbleibenden Zeit der aktuellen Runde ist ein \texttt{System.{\-}Timers.Timer} implementiert, der im Sekundentakt das Backend abfragt. Sinkt diese Zahl unter eine Sekunde, werden die vorhandenen Ideen der aktuellen BrainWave ans Backend gesendet. Gleichzeitig startet ein zusätzlicher Timer, der das BrainstormingFinding im Takt von 2.5s abfragt und prüft, ob sich die Runde geändert hat. Ist dies der Fall, müssen die betroffenen UI-Elemente aktualisiert werden. Die Logik, die vom zusätzlichen Timer aufgerufen wird, ist in der Methode \textit{UpdateRound()} im Listing \ref{Update-Round} zu finden.
+Für das Abfragen der verbleibenden Zeit in der aktuellen Runde ist ein \texttt{System.{\-}Timers.Timer} implementiert, der im Sekundentakt das Backend abfragt. Sinkt diese Zahl unter eine Sekunde, werden die vorhandenen Ideen der aktuellen BrainWave ans Backend gesendet. Gleichzeitig startet ein zusätzlicher Timer, der das BrainstormingFinding im Takt von 2.5s abfragt und prüft, ob sich die Runde geändert hat. Ist dies der Fall, müssen die betroffenen UI-Elemente aktualisiert werden. Die Logik, die vom zusätzlichen Timer aufgerufen wird, ist in der Methode \textit{UpdateRound()} im Listing \ref{Update-Round} zu finden.
 
 \begin{lstlisting}[label=Update-Round,caption=Poll-Mechanismus um zu prüfen ob Runde gewechselt hat]
 private void UpdateRound()
