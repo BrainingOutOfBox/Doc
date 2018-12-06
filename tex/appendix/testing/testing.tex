@@ -15,15 +15,15 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 		\hline\hline
 		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
 		\hline
-		1 & Als Participant möchte ich als Letzter die letzte Runde abschliessen. & Das System speichert meine Notizen auf dem Server und zeigt mir eine Meldung an, dass das Finding einsehbar ist. & INSERT HERE \\
+		1 & Als Participant möchte ich als Letzter die letzte Runde abschliessen. & Das System speichert meine Notizen auf dem Server und zeigt mir eine Meldung an, dass das Finding einsehbar ist. & J Führung für User könnte besser sein \\
 		\hline
-		2 & Als Participant möchte ich die Resultate der Gruppe ansehen. & Das System zeigt mir eine Übersicht mit allen Notizen der Teilnehmer. & INSERT HERE\\
+		2 & Als Participant möchte ich die Resultate der Gruppe ansehen. & Das System zeigt mir eine Übersicht mit allen Notizen der Teilnehmer. & J\\
 		\hline
-		3 & Als Participant möchte ich nicht als Letzter die letzte Runde abschliessen. & Das System speichert meine Notizen auf dem Server und zeigt mir die verbleibende Zeit an. & INSERT HERE\\
+		3 & Als Participant möchte ich nicht als Letzter die letzte Runde abschliessen. & Das System speichert meine Notizen auf dem Server und zeigt mir die verbleibende Zeit an. & J Führung für User könnte besser sein\\
 		\hline
-		4 & Nach Ablauf der Zeit meldet mir das System, dass das Finding einsehbar ist. & Das System zeigt mir eine Übersicht mit allen Notizen der Teilnehmer. & INSERT HERE \\
+		4 & Nach Ablauf der Zeit meldet mir das System, dass das Finding einsehbar ist. & Das System zeigt mir eine Übersicht mit allen Notizen der Teilnehmer. & J\\
 		\hline
-		5 & Als Participant möchte ich nicht direkt zu den Resultaten der Gruppe navigieren sondern zurück zum Homescreen gelangen. & Das System zeigt mir den Homescreen an. Von dort aus gelange ich aber auch zu den Notizen der Teilnehmer. & INSERT HERE  \\
+		5 & Als Participant möchte ich nicht direkt zu den Resultaten der Gruppe navigieren sondern zurück zum Homescreen gelangen. & Das System zeigt mir den Homescreen an. Von dort aus gelange ich aber auch zu den Notizen der Teilnehmer. & J  \\
 		\hline
 	\end{longtable}
 \end{center}
@@ -37,11 +37,11 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 		\hline\hline
 		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
 		\hline
-		1 & Als Participant möchte ich Notizen während der laufenden Rundenzeit zum aktuellen Problem erfassen. & Das System zeigt meine Notizen an. & INSERT HERE \\
+		1 & Als Participant möchte ich Notizen während der laufenden Rundenzeit zum aktuellen Problem erfassen. & Das System zeigt meine Notizen an. & J nicht immer klar wo die Idee eingefügt wurde \\
 		\hline
-		2 & Als Participant möchte ich meine Notizen frühzeitig abgeben. & Das System persistiert meine Notizen und zeigt mir eine Bestätigung an. & INSERT HERE\\
+		2 & Als Participant möchte ich meine Notizen frühzeitig abgeben. & Das System persistiert meine Notizen und zeigt mir eine Bestätigung an. & N keine Rückmel\-dung für den User\\
 		\hline
-		3 & Als Participant möchte ich meine Notizen nicht frühzeitig abgeben. & Das System zeigt mir eine Meldung an, dass die Zeit der aktuellen Runde abgelaufen ist. Es persistiert die bis zu dem Zeitpunkt erfassten Notizen. & INSERT HERE\\
+		3 & Als Participant möchte ich meine Notizen nicht frühzeitig abgeben. & Das System zeigt mir eine Meldung an, dass die Zeit der aktuellen Runde abgelaufen ist. Es persistiert die bis zu dem Zeitpunkt erfassten Notizen. & N keine Rückmel\-dung für den User \\
 		\hline
 	\end{longtable}
 \end{center}
@@ -54,9 +54,25 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 		\hline\hline
 		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
 		\hline
-		1 & Als Moderator möchte ich ein Brainstorming-Session starten. & Das System überprüft zunächst, ob alle Einstellungen stimmen und startet dann die Brainstorming-Session. & INSERT HERE \\
+		1 & Als Moderator möchte ich ein Brainstorming-Session starten. & Das System überprüft zunächst, ob alle Einstellungen stimmen und startet dann die Brainstorming-Session. & J \\
 		\hline
-		2 & Als Participant möchte ich ein Brainstorming-Session starten. & Als Participant ist es nicht möglich eine Brainstorming-Session zu starten & INSERT HERE\\
+		2 & Als Participant möchte ich ein Brainstorming-Session starten. & Als Participant ist es nicht möglich eine Brainstorming-Session zu starten & J\\
 		\hline
 	\end{longtable}
 \end{center}
+
+\subsection{Testauswertung}
+Nachdem wir die Testfälle mehrmals mit einem iPhone und zwei Android-Smartphones durchgeführt haben, haben sich folgende Punkte für Verbesserungen herauskristallisiert:
+
+\begin{enumerate}
+	\item In der gesamten Applikation gibt es fast keine Führung für den User. Damit ist die Orientierung für den Enduser noch sehr schwierig. 
+	\item Auch gibt es keine Rückmeldungen vom System an den User (Erfolgreiche Eingabe etc.), was den Umstand der schwierigen Orientierung von verstärkt.
+	\item Ein weiterer Punkt, welcher für die schlechte Userführung verantwortlich ist, war der Umstand, dass  bei der Eingabe der einzelnen Ideen nicht klar war, dass man nach links und rechts wischen kann, um die anderen Ideen und Blätter anzusehen. Hier würde dem User ein Label mit der aktuellen Blattnummer (Sheet 1/3) viel Klarheit schaffen.
+	\item Weiter würde eine Umbenennung einzelner Buttons (\grqq Login\grqq{} zu \grqq Login to Methode 635\grqq{} oder \grqq Add Brainstorming Finding\grqq{} zu \grqq Add Brainstorming Session\grqq{})
+	\item Als zusätzliches Feature wurde die Möglichkeit gesehen, die Ideen einer abgeschlossenen Brainstorming Session als PDF abzuspeichern oder gar einer anderen App zur Verfügung zu stellen.
+\end{enumerate}
+Während der Testdurchführung hat sich herausgestellt, dass der automatische Rundenwechsel von der Applikation nicht immer korrekt erkannt und durchgeführt wird. Dies führt dann zu irreführenden Zuständen für den Benutzer. Dafür konnte aber ein Workaround mittels einer Sync-Funktion entwickelt werden. Sollte der Rundenwechsel nicht automatisch funktionieren, kann auf das Logo geklickt werden, um den Zustand neu vom Server zu laden.
+
+
+
+
