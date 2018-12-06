@@ -14,17 +14,16 @@ Wir haben keinen Anhaltspunkt, was der Fehler sein könnte, denn werden die gena
 
 Als Work-Around haben wir eine \texttt{CustomSslEngineProvider} geschrieben, der den Pfad zum Keystore direkt im Code beinhaltet. Darauf hat Puppet keinen Einfluss und die Applikation funktioniert wie gewünscht.
 
-\subsubsection{Kritisches Design der Brainstorming Logik auf Frontend}
-Im Verlaufe der Entwicklungsphasen hat sich insbesondere die Klasse \texttt{Brain\-storming\-PageViewModel} stetig vergrössert und wurde komplexer. Die gesamte Logik für den Blattwechsel, das Holen der verbleibenden Zeit, das Ein- und Ausblenden einiger Controls sowie das Überprüfen, ob eine Runde abgeschlossen wurde ist in dieser Klasse implementiert. 
+\subsubsection{Kritisches Design der Brainstorming Logik im Frontend}
+Im Verlaufe der Entwicklungsphasen hat sich insbesondere die Klasse \texttt{Brain\-storming\-PageViewModel} stetig vergrössert und wurde komplexer. Die gesamte Logik für den Blattwechsel, das Holen der verbleibenden Zeit, das Ein- und Ausblenden einiger Controls sowie das Überprüfen, ob eine Runde abgeschlossen wurde, ist in dieser Klasse implementiert. 
 
-Wie wir bald feststellten, macht eine solche Klasse die Fehlersuche sehr schwierig. Es wurden zwar einige kleinere Bugs behoben, aber dabei wurden auch neue aufgedeckt. Wenn zwei Timers aktiv sind und somit Parallelität im Spiel ist, ist das Verhalten der App nicht deterministisch. So haben wir die Situation, dass einmal eine Runde einwandfrei funktioniert, und ein andermal mit derselben Konfiguration die Controls nicht richtig aktualisiert werden. 
+Wie wir bald feststellten, macht eine solche Klasse die Fehlersuche sehr schwierig. Es wurden zwar einige kleinere Bugs behoben, aber es wurden dabei auch neue aufgedeckt beziehungsweise eingeschleust. Wenn zwei Timers aktiv sind und somit Parallelität im Spiel ist, ist das Verhalten der App nicht deterministisch. So haben wir die Situation, dass einmal eine Runde einwandfrei funktioniert, und ein andermal mit derselben Konfiguration die Controls nicht richtig aktualisiert werden. 
 
-Um die Komplexität zu verringern, wurde ein Konzept erarbeitet, welches in einer allfälligen Folgearbeit umgesetzt werden sollte. Dabei geht es darum, eine State-Machine einzuführen und somit die drei Zustände \textbf{Waiting}, \textbf{Running} und \textbf{Ended} modelliert. Bei jedem Aufruf der View-Model-Klasse wird zu Beginn überprüft, in welchem Zustand das aktuelle Finding ist und die Maschine in den entsprechenden Zustand versetzt. Darauf sind dann alle benötigten Controls und Timers implementiert. 
+Um die Komplexität zu verringern, wurde ein Konzept erarbeitet, welches in einer allfälligen Folgearbeit umgesetzt werden sollte. Dabei geht es darum, eine State-Machine einzuführen, welche die drei Zustände \textbf{Waiting}, \textbf{Running} und \textbf{Ended} enthält. Bei jedem Aufruf der ViewModel-Klasse wird zu Beginn überprüft, in welchem Zustand das aktuelle Finding ist und die Maschine wird dann in den entsprechenden Zustand versetzt. Darauf sind alle für die Controls benötigten Properties und Timers implementiert. 
 
 Der grosse Vorteil bei dieser Lösung ist, dass der Überblick zurückgewonnen werden kann und somit eine sauberere Fehlerbehandlung möglich ist. Auch Erweiterungen sind somit einfacher möglich (zum Beispiel Hinzufügen eines "Review"-States). 
 
 Abbildung \ref{fig:statemachine-brainstorming} erklärt das Konzept anhand einem Zustandsdiagramm.
-
 
 \begin{figure}
 	\centering
