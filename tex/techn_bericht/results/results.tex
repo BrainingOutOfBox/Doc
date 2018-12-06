@@ -163,7 +163,7 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
 \end{lstlisting}
 
 \subsubsection{Implementierung der Xamarin App}
-Um den ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \ref{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
+Um den ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
 
 \begin{lstlisting}[label=register-vm,caption=Verknüpfung von View mit ViewModel in Prism.Forms]
 containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
