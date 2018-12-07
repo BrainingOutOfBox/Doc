@@ -222,26 +222,55 @@ Einige der erwähnten Komponenten können der Abbildung \ref{fig:brainstorming-o
 
 Für das Abfragen der verbleibenden Zeit in der aktuellen Runde ist ein \texttt{System.{\-}Timers.Timer} implementiert, der im Sekundentakt das Backend abfragt. Sinkt diese Zahl unter eine Sekunde, werden die vorhandenen Ideen der aktuellen BrainWave ans Backend gesendet. Gleichzeitig startet ein zusätzlicher Timer, der das BrainstormingFinding im Takt von 2.5s abfragt und prüft, ob sich die Runde geändert hat. Ist dies der Fall, müssen die betroffenen UI-Elemente aktualisiert werden. Die Logik, die vom zusätzlichen Timer aufgerufen wird, ist in der Methode \textit{UpdateRound()} im Listing \ref{Update-Round} zu finden.
 
+
 \begin{lstlisting}[label=Update-Round,caption=Poll-Mechanismus um zu prüfen ob Runde gewechselt hat]
 private void UpdateRound()
 {
-	var backendFinding = _brainstormingFindingRestResolver.GetFinding(_context.CurrentFinding);
-	if (backendFinding.CurrentRound != _context.CurrentFinding.CurrentRound)
-	{
-		_context.CurrentFinding = backendFinding;
-		Console.WriteLine("Round has changed, proceeding to next round");
-		NextRound();
-	}
+var backendFinding = _brainstormingFindingRestResolver.GetFinding(_context.CurrentFinding);
+if (backendFinding.CurrentRound != _context.CurrentFinding.CurrentRound)
+{
+_context.CurrentFinding = backendFinding;
+Console.WriteLine("Round has changed, proceeding to next round");
+NextRound();
+}
 }
 \end{lstlisting}
 
-
-
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\includegraphics[width=0.4\linewidth]{img/techn-bericht/brainstorming-overview}
+	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/brainstorming-overview}
 	\caption{Brainstorming Finding Übersicht während dem Swipen vom einen ins nächste BrainSheet}
 	\label{fig:brainstorming-overview}
 \end{figure}
 
+\paragraph*{Create/Join Group mit QR-Code}
+Wie in UC 10: Create Brainstorming Team und UC 5: Join Brainstorming Team spezifiziert, muss unser System einen Mechanismus für das Beitreten und Erstellen für ein Team bieten. 
 
+Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, den andere Teammitglieder mit einem QR-Scanner einlesen können. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei.
+
+Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen von der Recherche in Kapitel \ref{subsubsec:forms-vs-native} entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
+
+Listing \ref{generate} demonstriert, wie das Generieren und Darstellen des QR-Codes in XAML funktioniert.
+
+
+\begin{lstlisting}[label=generate,caption=Verwendung der ZXing Library fürs Generieren des QR-Codes]
+<forms:ZXingBarcodeImageView BarcodeValue="{Binding Text}"  BarcodeFormat="QR_CODE">
+\end{lstlisting}
+
+
+Listing \ref{scan} zeigt das Gegenstück zum oben genannten Generieren, nämlich den XAML-Code, der für das Scannen verwendet wird. Der interessante Teil dabei ist das Property \texttt{ScanResultCommand}, der es mittels MVVM erlaubt, über einen Command eine parametrisierte Methode aufzurufen. Auf dem Parameter ist das Scan-Resultat als Text gespeichert, in unserem Falle entspricht dieser der Team-Id, aufgrund welcher der QR-Code generiert wurde. Die Team-Id wird danach verwendet, um mittels RESTful HTTP auf dem Backend den JoinTeam Endpoint aufzurufen, der wiederum den entsprechenden Eintrag in der Datenbank durchführt und somit den User ins Team einfügt.
+
+
+\begin{lstlisting}[label=scan,caption=XAML fürs Scannen von QR-Codes]
+<zxing:ZXingScannerView IsScanning="true" Options="{Binding BarcodeOptions}" WidthRequest="200" HeightRequest="200" ScanResultCommand="{Binding FoundTeamIdCommand}" />
+<zxing:ZXingDefaultOverlay TopText="Place the code inside the area" Opacity="0.9" BottomText="{Binding BottomOverlayText}" />
+\end{lstlisting}
+
+Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion. 
+
+\begin{figure}
+	\centering	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/generate-view}
+	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/scan-view}
+	\caption{Generierter QR-Code links und QR-Code Scan rechts}
+	\label{fig:scan-generate}
+\end{figure}
