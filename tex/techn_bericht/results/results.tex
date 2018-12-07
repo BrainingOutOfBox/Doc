@@ -1,6 +1,6 @@
 \subsection{Ergebnisse}
 Das Kapitel der Ergebnisse befasst sich mit der konkreten Umsetzung der Xamarin Applikation und dem PlayFramework. Wir haben uns dabei ganz konkret für die nachfolgenden Code-Beispiele entschieden. Der Grund dafür ist, dass diese entweder den typischen Aufbau einer Methode zeigen oder wie das Listing \ref{watcher}, eine Kernlogik darstellen. 
-Bei den Ergebnissen der Xamarin App zeigen wir zusätzlich noch eine kurze Retrospektive auf geplantes Design und effektiver Umsetzung des GUIs.
+Bei den Ergebnissen der Xamarin App zeigen wir zusätzlich noch eine kurze Retrospektive auf geplantes Design und effektiver Umsetzung des GUIs. Das Kapitel wird durch eine Gegenüberstellung der erreichten und geplanten Arbeit abgeschlossen.
 
 Zur besseren Übersicht wurde der Code vereinzelt gekürzt. Dies ist durch 3 Punkte (...) gekennzeichnet.
 
@@ -248,7 +248,7 @@ Wie in UC 10: Create Brainstorming Team und UC 5: Join Brainstorming Team spezif
 
 Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, den andere Teammitglieder mit einem QR-Scanner einlesen können. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei.
 
-Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen von der Recherche in Kapitel \ref{subsubsec:forms-vs-native} entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
+Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen der Recherche in Kapitel \ref{subsubsec:forms-vs-native} entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
 
 Listing \ref{generate} demonstriert, wie das Generieren und Darstellen des QR-Codes in XAML funktioniert.
 
@@ -274,3 +274,10 @@ Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion.
 	\caption{Generierter QR-Code links und QR-Code Scan rechts}
 	\label{fig:scan-generate}
 \end{figure}
+
+\subsubsection{Vergleich Soll/Ist}
+Im Rückblick auf die in Kapitel \ref{subsec:ziele} formulierten Ziele und Liefergegenstände wurden die meisten Ziele erreicht. Die Konfigurierbarkeit ist durch die Applikation gegeben, denn es ist möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potential, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam , liegt an der Ressourcenknappheit. Aus gleichem Grund wurden die beiden anderen Sub-use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.
+
+Das Persistieren von Ideen in unserem System bietet der Papierversion gegenüber einen Vorteil, da die einzige Information für das spätere Abholen der Ideen die Login-Daten sind. Mit diesen können alle jemals erfassten Brainstorming Findings wieder gelesen werden, während in der Papierversion die Unterlagen physisch hervorgeholt werden müssten, falls sie überhaupt archiviert wurden.  
+
+Ein knapp erfülltes Ziel ist die Robustheit und Bedienbarkeit. So ist es ohne Weiteres möglich, die App gemäss ihrem Sinne auszuführen und zu verwenden, jedoch gibt es unintuitive Situationen und ab und an ist ein Refresh benötigt. Zum Beispiel kann es sein, dass beim Starten des Brainstormings nicht bei allen Participants das entsprechende Sheet vorliegt, sondern die View blank bleibt. Dies hängt mit den in Kapitel \ref{subsub:design-issue} erläuterten Problemen zusammen und kann durch das Betätigen der Sync-Funktionlität auf dem Icon behoben werden. 
