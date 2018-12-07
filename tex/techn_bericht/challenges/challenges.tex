@@ -24,7 +24,6 @@ Um die Komplexität zu verringern, wurde ein Konzept erarbeitet, welches in eine
 Der grosse Vorteil bei dieser Lösung ist, dass der Überblick zurückgewonnen werden kann und somit eine sauberere Fehlerbehandlung möglich ist. Auch Erweiterungen sind somit einfacher möglich (zum Beispiel Hinzufügen eines "Review"-States). 
 
 Abbildung \ref{fig:statemachine-brainstorming} erklärt das Konzept anhand einem Zustandsdiagramm.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{img/techn-bericht/statemachine-brainstorming}
@@ -32,5 +31,13 @@ Abbildung \ref{fig:statemachine-brainstorming} erklärt das Konzept anhand einem
 	\label{fig:statemachine-brainstorming}
 \end{figure}
 
-	
-	
+\paragraph*{Workaround}
+Als aktuelle Lösung bieten wir ein Sync-Button an, der beim Betätigen die Brainstorming Page aktualisiert. Dies hat zur Folge, dass alle Daten vom Backend geholt und wieder gesetzt werden. Wenn zum Beispiel ein Rundenwechsel nicht funktioniert hat, eignet sich dieses Feature, um den korrekten Zustand wiederherzustellen und mit dem Backend zu synchronisieren. Der Button ist im Icon hinterlegt, wie in Abbildung \ref{fig:sync-workaround} sichtbar.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.35\linewidth]{img/techn-bericht/sync-workaround}
+	\caption{Sync Button}
+	\label{fig:sync-workaround}
+\end{figure}
+
