@@ -244,11 +244,11 @@ NextRound();
 \end{figure}
 
 \paragraph*{Create/Join Group mit QR-Code}
-Wie in UC 10: Create Brainstorming Team und UC 5: Join Brainstorming Team spezifiziert, muss unser System einen Mechanismus für das Beitreten und Erstellen für ein Team bieten. 
+Wie in UC 10: Create Brainstorming Team und UC 5: Join Brainstorming Team spezifiziert, muss unser System einen Mechanismus für das Erstellen von Teams und beitreten in diese Teams bieten. 
 
-Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, den andere Teammitglieder mit einem QR-Scanner einlesen können. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei.
+Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, welcher von anderen Teammitgliedern mittels QR-Scanner einlesen werden kann. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei.
 
-Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen der Recherche in Kapitel \ref{subsubsec:forms-vs-native} entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
+Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen der Recherche (Kapitel \ref{subsubsec:forms-vs-native}) entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
 
 Listing \ref{generate} demonstriert, wie das Generieren und Darstellen des QR-Codes in XAML funktioniert.
 
@@ -258,7 +258,7 @@ Listing \ref{generate} demonstriert, wie das Generieren und Darstellen des QR-Co
 \end{lstlisting}
 
 
-Listing \ref{scan} zeigt das Gegenstück zum oben genannten Generieren, nämlich den XAML-Code, der für das Scannen verwendet wird. Der interessante Teil dabei ist das Property \texttt{ScanResultCommand}, der es mittels MVVM erlaubt, über einen Command eine parametrisierte Methode aufzurufen. Auf dem Parameter ist das Scan-Resultat als Text gespeichert, in unserem Falle entspricht dieser der Team-Id, aufgrund welcher der QR-Code generiert wurde. Die Team-Id wird danach verwendet, um mittels RESTful HTTP auf dem Backend den JoinTeam Endpoint aufzurufen, der wiederum den entsprechenden Eintrag in der Datenbank durchführt und somit den User ins Team einfügt.
+Listing \ref{scan} zeigt das Gegenstück zum oben genannten Generieren, nämlich den XAML-Code, der für das Scannen verwendet wird. Der interessante Teil dabei ist das Property \texttt{ScanResultCommand}, was es mittels MVVM erlaubt, über einen Command eine parametrisierte Methode aufzurufen. Auf dem Parameter ist das Scan-Resultat als Text gespeichert. In unserem Fall entspricht dieser der Team-Id, aufgrund welcher der QR-Code generiert wurde. Die Team-Id wird danach verwendet, um mittels RESTful HTTP auf dem Backend den JoinTeam Endpoint aufzurufen, der wiederum den entsprechenden Eintrag in der Datenbank durchführt und somit den User ins Team einfügt.
 
 
 \begin{lstlisting}[label=scan,caption=XAML fürs Scannen von QR-Codes]
@@ -276,10 +276,12 @@ Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion.
 \end{figure}
 
 \subsubsection{Vergleich Soll/Ist}
-Im Rückblick auf die in Kapitel \ref{subsec:ziele} formulierten Ziele und Liefergegenstände wurden die meisten Ziele erreicht. Die Konfigurierbarkeit ist durch die Applikation gegeben, denn es ist möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potential, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam , liegt an der Ressourcenknappheit. Aus gleichem Grund wurden die beiden anderen Sub-use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.
+Im Rückblick auf die in Kapitel \ref{subsec:ziele} formulierten Ziele und Liefergegenstände wurden die meisten Ziele erreicht. Die Konfigurierbarkeit ist durch die Applikation gegeben. Es ist daher möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potential, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam , liegt an der begrenzten Zeit von 14 Wochen. Aus gleichem Grund wurden die beiden anderen Sub-Use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.
 
-Das Persistieren von Ideen in unserem System bietet der Papierversion gegenüber einen Vorteil, da die einzige Information für das spätere Abholen der Ideen die Login-Daten sind. Mit diesen können alle jemals erfassten Brainstorming Findings wieder gelesen werden, während in der Papierversion die Unterlagen physisch hervorgeholt werden müssten, falls sie überhaupt archiviert wurden.  
+Das Persistieren von Ideen in unserem System bietet der Papierversion gegenüber einen Vorteil, da die einzige Information für das spätere Abholen der Ideen die Login-Daten sind. Mit diesen können alle jemals erfassten BrainstormingFindings wieder gelesen werden, während in der Papierversion die Unterlagen physisch hervorgeholt werden müssten, falls sie überhaupt archiviert wurden.  
 
-Ein knapp erfülltes Ziel ist die Robustheit und Bedienbarkeit. So ist es ohne Weiteres möglich, die App gemäss ihrem Sinne auszuführen und zu verwenden, jedoch gibt es unintuitive Situationen und ab und an ist ein Refresh benötigt. Zum Beispiel kann es sein, dass beim Starten des Brainstormings nicht bei allen Participants das entsprechende Sheet vorliegt, sondern die View blank bleibt. Dies hängt mit den in Kapitel \ref{subsub:design-issue} erläuterten Problemen zusammen und kann durch das Betätigen der Sync-Funktionlität auf dem Icon behoben werden. 
+Ein knapp erfülltes Ziel ist die Robustheit und Bedienbarkeit. So ist es ohne Weiteres möglich, die App gemäss ihrem Sinne auszuführen und zu verwenden, jedoch ist die Benutzerführung nicht überall intuitiv. Auch kann es vorkommen, dass ab und an ein Refresh benötigt wird. Zum Beispiel kann es sein, dass beim Starten des Brainstormings nicht bei allen Participants das entsprechende Sheet vorliegt, sondern die View leer bleibt. Dies hängt mit den in Kapitel \ref{subsub:design-issue} erläuterten Problemen zusammen und kann durch das Betätigen der Sync-Funktionlität auf dem Icon behoben werden. 
 
-Weitere nicht implementierte Features sind UC 2: Logout auf Back- und Frontend sowie UC4: Delete Account und UC6: Leave Brainstorming Team auf dem Frontend. Da diese keine kritischen Erfolgsfaktoren sind und zur Kernfunktionlität nicht wesentlich beitragen, wurden diese nach iterativer Planung und Abwägen der Ressourcen nicht implementiert. 
+Weitere nicht implementierte Features sind UC 2: Logout auf Back- und Frontend sowie UC4: Delete Account und UC6: Leave Brainstorming Team auf dem Frontend. Da diese keine kritischen Erfolgsfaktoren sind und zur Kernfunktionlität nicht wesentlich beitragen, wurden diese nach iterativer Planung und Abwägen der Ressourcen nicht implementiert.
+
+Ansonsten konnten alle spezifizierten Use-Cases komplett umgesetzt werden.
