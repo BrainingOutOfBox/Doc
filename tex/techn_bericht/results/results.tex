@@ -162,6 +162,22 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
 }
 \end{lstlisting}
 
+\subsubsection{Verwendete Bibliotheken im PlayFramework}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | l | c | l |}
+		\hline
+		\textbf{Bibliothek} & \textbf{Version} & \textbf{Repository} & \textbf{Lizenz}\\
+		\hline
+		swagger-play2 & 1.6.0 & \href{https://mvnrepository.com/artifact/io.swagger/swagger-play2_2.12/1.6.0}{mvnrepository.com} & Apache 2.0 \\
+		java-jwt & 3.2.0 & \href{https://mvnrepository.com/artifact/com.auth0/java-jwt/3.2.0}{mvnrepository.com} & MIT \\
+		mongodb-driver-async & 3.8.0 & \href{https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-async/3.8.0}{mvnrepository.com} & MIT \\
+		\hline
+	\end{tabular}
+	\caption[Story-Points]{Verwendete Bibliotheken PlayFramework}
+	\label{tab:verwendete-libraries-play}
+\end{table}
+
 \subsubsection{Implementierung der Xamarin App}
 Um ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
 
