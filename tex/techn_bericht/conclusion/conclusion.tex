@@ -6,6 +6,23 @@ Im Kapitel der Schlussfolgerungen wollen wir nochmals auf unser Projekt und dess
 % Issue mit den Timern/Multithreading erwähnen
 
 
+\subsubsection{Bekannte Probleme}
+Dieses Kapitel dient dazu, Fehlverhalten in unserem System zu dokumentieren.
+
+
+\begin{basedescript}{
+		\desclabelstyle{\multilinelabel}
+		\desclabelwidth{4.5cm}
+		\setlength{\itemsep}{5ex}}
+	\item [Absturz bei Join Team] Beim erstmaligem Ausführen der Join Team Funktionalität fragt Android nach der Berechtigung für den Zugriff auf die Kamera. Sobald diese gewährleistet wird, stürzt die Applikation aus ungeklärten Gründen ab. Wurde die Berechtigung einmal vergeben, funktioniert das Beitreten des Teams wie gewünscht.
+	
+	\item [Neue Runde/Overview wird nicht richtig dargestellt] 
+	Wenn das Brainstorming gestartet wird oder eine neue Runde beginnt, kommt es vor, dass die Sheets nicht wie gewünscht aktualisiert werden. Abhilfe verschafft die Sync-Funktionlität, die hinter dem Icon versteckt ist.
+	
+	\item [Kein Feedback beim Team erstellen] 
+	Wird zuerst ein Team erstellt, darauf ein Brainstorming Finding erstellt und gestarted und im Anschluss darauf versucht, erneut ein Team zu erstellen, wird man nicht weitergeleitet. Das Team wird zwar auf dem Backend erstellt, jedoch auf dem Frontend nicht aktualisiert.
+\end{basedescript}
+
 
 \subsubsection{Ausblick}
 \label{subsub:Ausblick}
