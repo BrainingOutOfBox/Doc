@@ -242,13 +242,13 @@ Für das Abfragen der verbleibenden Zeit in der aktuellen Runde ist ein \texttt{
 \begin{lstlisting}[label=Update-Round,caption=Poll-Mechanismus um zu prüfen ob Runde gewechselt hat]
 private void UpdateRound()
 {
-var backendFinding = _brainstormingFindingRestResolver.GetFinding(_context.CurrentFinding);
-if (backendFinding.CurrentRound != _context.CurrentFinding.CurrentRound)
-{
-_context.CurrentFinding = backendFinding;
-Console.WriteLine("Round has changed, proceeding to next round");
-NextRound();
-}
+	var backendFinding = _brainstormingFindingRestResolver.GetFinding(_context.CurrentFinding);
+	if (backendFinding.CurrentRound != _context.CurrentFinding.CurrentRound)
+	{
+		_context.CurrentFinding = backendFinding;
+		Console.WriteLine("Round has changed, proceeding to next round");
+		NextRound();
+	}
 }
 \end{lstlisting}
 

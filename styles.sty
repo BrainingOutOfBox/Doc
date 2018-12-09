@@ -54,3 +54,25 @@
 
 %Select sans-serif font
 \renewcommand{\familydefault}{\sfdefault}
+
+
+
+
+%Listings style
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{lightlightgray}{gray}{0.9}
+
+\lstdefinestyle{sharpc}{
+	language=[Sharp]C,
+	frame=ltrb,
+	rulecolor=\color{black},
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\scriptsize,
+	backgroundcolor=\color{lightlightgray},
+	showspaces=false}
+
+\lstset{style=sharpc, tabsize=1}
+
