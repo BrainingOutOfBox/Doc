@@ -10,7 +10,7 @@ Die Umsetzung des Backends basiert auf dem PlayFramework. Die Gründe für diese
 Um die Daten permanent zu speichern, besitzt das PlayFramework eine Anbindung an eine MongoDB Instanz. Die Anbindung wurde mit dem MongoDB Async Driver für Java \cite{MongoDBAsyncDriver} realisiert. Die Implementation ist daher auch in Java geschrieben. Für die Dokumentation des Backends verwendeten wir Swagger \cite{swagger}.
 
 \paragraph*{ParticipantController.java}
-Die nachfolgenden Listings zeigen einen Ausschnitt aus der \texttt{ParticipantController.java} Klasse. Diese befindet sich in der LogicComponent (Abbildung \ref{fig:architektur-methode635}) vom PlayFramework.
+Die nachfolgenden Listings zeigen einen Ausschnitt aus der \texttt{Participant\-Controller\-.java} Klasse. Diese befindet sich in der LogicComponent (Abbildung \ref{fig:architektur-methode635}) vom PlayFramework.
 
 \lstset{language=JAVA, showstringspaces=false, frame=single, captionpos=b, label=createParticipant, breaklines=true, numbers=left}
 \begin{lstlisting}[caption={Participant erstellen}, label=participantErstellen]
@@ -290,6 +290,31 @@ Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion.
 	\caption{Generierter QR-Code links und QR-Code Scan rechts}
 	\label{fig:scan-generate}
 \end{figure}
+
+\subsubsection{Verwendete Bibliotheken im Frontend}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | l | c | l |}
+		\hline
+		\textbf{Bibliothek} & \textbf{Version} & \textbf{Repository} & \textbf{Lizenz}\\
+		\hline
+		CarouselView.FormsPlugin & 5.2.0 & \href{https://github.com/alexrainman/CarouselView}{github.com} & MIT \\
+		Microsoft.AppCenter & 1.10.0 & \href{https://visualstudio.microsoft.com/app-center/}{AppCenter} & MIT \\
+		NUnit & 3.11.0 & \href{http://nunit.org}{nunit.org} & MIT\\
+		NUnit3TestAdapter & 3.11.2 & \href{https://github.com/nunit/docs/wiki/Visual-Studio-Test-Adapter}{github.com} & MIT\\
+		Prism.Forms & 7.0.0.396 & \href{https://github.com/PrismLibrary/Prism}{github.com} & MIT \\
+		Xamarin.Forms & 3.3.0.912540 & \href{https://docs.microsoft.com/en-us/xamarin/xamarin-forms/}{Microsoft Docs} & MIT \\
+		XamlStyler.Console & 3.0.0 & 
+		\href{https://github.com/Xavalon/XamlStyler}{github.com} & Apache 2.0\\
+		ZXing.Net.Mobile & 2.4.1 & \href{http://github.com/Redth/ZXing.Net.Mobile}{github.com} & Apache 2.0\\
+		ZXing.Net.Mobile.Forms & 2.4.1 &
+		\href{http://github.com/Redth/ZXing.Net.Mobile}{github.com} & Apache 2.0\\
+		\hline
+	\end{tabular}
+	\caption{Direkt verwendete Bibliotheken Frontend}
+	\label{tab:verwendete-libraries-frontend}
+\end{table}
+
 
 \subsubsection{Vergleich Soll/Ist}\label{subsub:vergleich-soll-ist}
 Im Rückblick auf die in Kapitel \ref{subsec:ziele} formulierten Ziele und Liefergegenstände wurden die meisten Ziele erreicht. Die Konfigurierbarkeit ist durch die Applikation gegeben. Es ist daher möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potential, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam , liegt an der begrenzten Zeit von 14 Wochen. Aus gleichem Grund wurden die beiden anderen Sub-Use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.

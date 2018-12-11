@@ -8,7 +8,7 @@ Nach kurzen Recherchen haben wir für das Erstellen und Validieren des Zertifika
 
 Auch mit dem verwendeten Play Framework sollte das Aufsetzen der HTTPS Site kein Problem darstellen, es sollte mit einem Parameter beim Start der Applikation gut möglich sein. 
 
-Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich lief, galt es, das Gesamte noch in den Build-Prozess einzubauen. Dabei kam das Problem auf, dass der Pfad zum Keystore, der das Let's Encrypt-Zertifikat beinhaltet, nicht gültig war. Nach mehrmaligem, gründlichem Überprüfen des Pfades und neu Builden, wurden immer noch Exceptions geworfen.
+Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich verschlüsselt lief, galt es, das Gesamte noch in den Build-Prozess einzubauen. Dabei kam das Problem auf, dass der Pfad zum Keystore, der das Let's Encrypt-Zertifikat beinhaltet, nicht gültig war. Nach mehrmaligem, gründlichem Überprüfen des Pfades und neu Builden, wurden immer noch Exceptions geworfen.
 
 Wir haben keinen Anhaltspunkt, was der Fehler sein könnte, denn werden die genau gleichen Befehle auf dem Backend-Server direkt ausgeführt, funktioniert die Applikation einwandfrei auf HTTPS. Sobald es aber über den Build-Server läuft, findet er den Pfad zum Keystore nicht mehr.
 
