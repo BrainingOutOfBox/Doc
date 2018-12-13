@@ -162,7 +162,8 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
 }
 \end{lstlisting}
 
-\subsubsection{Verwendete Bibliotheken im PlayFramework}
+\subsubsection{Verwendete Bibliotheken im Backend}
+Tabelle \ref{tab:verwendete-libraries-play} zeigt die Bibliotheken auf, die im Backend verwendet werden. 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{| l | l | c | l |}
@@ -174,20 +175,22 @@ public Result startBrainstorming(String findingIdentifer) throws ExecutionExcept
 		mongodb-driver-async & 3.8.0 & \href{https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-async/3.8.0}{mvnrepository.com} & MIT \\
 		\hline
 	\end{tabular}
-	\caption[Story-Points]{Verwendete Bibliotheken PlayFramework}
+	\caption[Story-Points]{Verwendete Bibliotheken Backend}
 	\label{tab:verwendete-libraries-play}
 \end{table}
 
 \subsubsection{Implementierung der Xamarin App}
-Um ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das bei Xamarin üblich ist und die Views von dessen ViewModels abkapselt. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
+In vielen Microsoft UI Technologien ist das MVVM-Pattern Standard. Dabei geht es um ein Design-Pattern, welches die Objekte in \textbf{M}odel, \textbf{V}iew, \textbf{V}iew\textbf{M}odel unterteilt. Man kann so die View sauber von den darunterliegenden Schichten trennen. Auch in diesem Projekt steht dieses Pattern im Einsatz.
+
+Um ein sauberes Design des Frontends zu ermöglichen, ist das MVVM\--Framework Prism.Forms \cite{prism} im Einsatz. Dies vereinfacht die Verwendung des MVVM-Patterns, das auch bei Xamarin üblich ist. Die ViewModels werden mit diesem Framework entweder per Konvention oder per Konfiguration miteinander verknüpft, sodass der \texttt{BindingContext} einer View auf das entsprechende ViewModel gesetzt ist. Dieser wird benötigt, um die berechneten Werte der Variablen im User Interface darzustellen. In Listing \ref{register-vm} verknüpfen wir das MainPageViewModel mit der MainPageView, sodass wir darauf navigieren können. 
 
 \begin{lstlisting}[label=register-vm,caption=Verknüpfung von View mit ViewModel in Prism.Forms]
 containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 \end{lstlisting}
 
-Das Framework bietet weiter \textit{Dependency Injection} an. Zum Beispiel kann so ein Navigation Service jeder Komponente im Konstruktor mitgegeben werden, dass diesem das Navigieren ermöglicht wird. 
+Das Framework bietet weiter \textit{Dependency Injection}\footnote{Siehe Application Architecture Vorlesung Woche 5} an. Zum Beispiel kann so ein Navigation Service jeder Komponente im Konstruktor mitgegeben werden, dass diesem das Navigieren ermöglicht wird. 
 
-Als Ausgangslage für die Umsetzung dienten die Mockups. Aufgrund diesen recherchierten wir in der Dokumentation von Xamarin Forms nach möglichen User Controls und Layouts, die eingesetzt werden sollten. Dabei stellte sich heraus, dass das erarbeitete Navigationskonzept in den Mockups sich nicht implementieren liess. Problem dabei war, dass das Mockup mit den von Xamarin Forms dargebotenen Layouts nur sehr umständlich programmiert werden konnte. Dabei hätten wir eine \texttt{MasterDetailPage} mit Swipe Gestures erweitern müssen, welche aber schon vom Framework für einen anderen Zweck verwendet werden. Deshalb haben wir uns für eine \texttt{TabbedPage} entschieden, die die relevanten Daten ebenso nützlich darstellt. In Abbildung \ref{fig:comparison-mockup-app} sind die Unterschiede zwischen  der App und dem Mockup ersichtlich.
+Als Ausgangslage für die Umsetzung dienten die Mockups. Aufgrund diesen recherchierten wir in der Dokumentation von Xamarin Forms nach möglichen User Controls und Layouts, die eingesetzt werden sollten. Dabei stellte sich heraus, dass das erarbeitete Navigationskonzept in den Mockups sich nicht implementieren liess. Problem dabei war, dass das Mockup mit den von Xamarin Forms dargebotenen Layouts nur sehr umständlich programmiert werden konnte. Dabei hätten wir eine \texttt{MasterDetailPage} mit Swipe Gestures erweitern müssen, welche aber schon vom Framework für das Auf- und Zuklappen der Seitennavigation verwendet werden. Deshalb haben wir uns für eine \texttt{TabbedPage} entschieden, die die relevanten Daten ebenso nützlich darstellt. In Abbildung \ref{fig:comparison-mockup-app} sind die Unterschiede zwischen  der App und dem Mockup ersichtlich.
 
 \begin{figure}
 	\centering
@@ -198,7 +201,7 @@ Als Ausgangslage für die Umsetzung dienten die Mockups. Aufgrund diesen recherc
 \end{figure}
 	
 \paragraph*{Umsetzung Brainstorming}
-Die Brainstorming Page besteht aus drei visuellen Bereichen, dem Header, Footer und Center. Je nach Zustand des BrainstormingFindings werden Elemente davon angezeigt oder nicht. Es gibt 3 Zustände, indem ein Brainstorming sein kann:
+Die Brainstorming Page besteht aus drei visuellen Bereichen, Header, Footer und Center. Je nach Zustand des BrainstormingFindings werden Elemente davon angezeigt oder nicht. Es gibt 3 Zustände, indem ein Brainstorming sein kann:
 \begin{enumerate}
 	\item \textbf{Waiting}. Das Brainstorming ist erstellt und es wird darauf gewartet, dass der Moderator den Prozess startet.
 	\item \textbf{Running}. Das Brainstorming läuft und die Runden werden herauf- und die verbleibende Zeit pro Runde heruntergezählt.
@@ -219,7 +222,7 @@ Tabelle \ref{tab:visual-elements} zeigt die Sichtbarkeit einiger relevanten Cont
 		'Completed' & x & x & \checkmark\\
 		\hline
 		\textbf{Center}	& & & \\
-		BrainSheets & x & \checkmark & \checkmark\\
+		BrainSheets (Darstellung der Blätter) & x & \checkmark & \checkmark\\
 		\hline
 		\textbf{Footer}	& & & \\
 		Commit Button & \checkmark (disabled) & \checkmark & x\\
@@ -230,12 +233,18 @@ Tabelle \ref{tab:visual-elements} zeigt die Sichtbarkeit einiger relevanten Cont
 		\label{tab:visual-elements}
 	\end{longtable}
 \end{center}
-
+\vspace{-0.5cm}
 
 Einige der erwähnten Komponenten können der Abbildung \ref{fig:brainstorming-overview} entnommen werden.
 
 
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/brainstorming-overview}
+	\caption{Brainstorming Finding Übersicht während dem Swipen vom einen ins nächste BrainSheet}
+	\label{fig:brainstorming-overview}
+\end{figure}
+\newpage
 Für das Abfragen der verbleibenden Zeit in der aktuellen Runde ist ein \texttt{System.{\-}Timers.Timer} implementiert, der im Sekundentakt das Backend abfragt. Sinkt diese Zahl unter eine Sekunde, werden die vorhandenen Ideen der aktuellen BrainWave ans Backend gesendet. Gleichzeitig startet ein zusätzlicher Timer, der das BrainstormingFinding im Takt von 2.5s abfragt und prüft, ob sich die Runde geändert hat. Ist dies der Fall, müssen die betroffenen UI-Elemente aktualisiert werden. Die Logik, die vom zusätzlichen Timer aufgerufen wird, ist in der Methode \textit{UpdateRound()} im Listing \ref{Update-Round} zu finden.
 
 
@@ -252,19 +261,13 @@ private void UpdateRound()
 }
 \end{lstlisting}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/brainstorming-overview}
-	\caption{Brainstorming Finding Übersicht während dem Swipen vom einen ins nächste BrainSheet}
-	\label{fig:brainstorming-overview}
-\end{figure}
 
 \paragraph*{Create/Join Group mit QR-Code}
 Wie in UC 10: Create Brainstorming Team und UC 5: Join Brainstorming Team spezifiziert, muss unser System einen Mechanismus für das Erstellen von Teams und beitreten in diese Teams bieten. 
 
-Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, welcher von anderen Teammitgliedern mittels QR-Scanner einlesen werden kann. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei.
+Wir kreierten eine Lösung, die beim Erstellen des Teams einen QR-Code generiert, welcher von anderen Teammitgliedern mittels QR-Scanner einlesen werden kann. Durch den Scan-Vorgang treten die Mitglieder automatisch der erstellten Gruppe bei. Dies bedingt, dass alle Mitglieder einmal für das Erstellen des Teams beieinander sein müssen. 
 
-Um diesen Mechanismus umzusetzen, wurde eine Library namens ZXing \cite{zxing.net} verwendet, die wir im Rahmen der Recherche (Kapitel \ref{subsubsec:forms-vs-native}) entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
+Um diesen Mechanismus umzusetzen, wurde die ZXing \cite{zxing.net} Library verwendet, die wir im Rahmen der Recherche (Kapitel \ref{subsubsec:forms-vs-native}) entdeckten. Diese erlaubt es, ein Xamarin Control für das Scannen und das Generieren zu verwenden. Mit etwas plattform-spezifischem Konfigurationsaufwand funktioniert diese Library wie gewünscht.
 
 Listing \ref{generate} demonstriert, wie das Generieren und Darstellen des QR-Codes in XAML funktioniert.
 
@@ -282,7 +285,7 @@ Listing \ref{scan} zeigt das Gegenstück zum oben genannten Generieren, nämlich
 <zxing:ZXingDefaultOverlay TopText="Place the code inside the area" Opacity="0.9" BottomText="{Binding BottomOverlayText}" />
 \end{lstlisting}
 
-Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion. 
+Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls  zur Generierung und Scannen von QR-Codes auf einem Android Device in Aktion. 
 
 \begin{figure}
 	\centering	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/generate-view}
@@ -290,9 +293,10 @@ Die Abbildung \ref{fig:scan-generate} zeigt die beiden Controls in Aktion.
 	\caption{Generierter QR-Code links und QR-Code Scan rechts}
 	\label{fig:scan-generate}
 \end{figure}
-
+\newpage
 \subsubsection{Verwendete Bibliotheken im Frontend}
-\begin{table}[h]
+In Tabelle \ref{tab:verwendete-libraries-frontend} sind die verwendeten Libraries und Frameworks des Frontends aufgelistet.
+\begin{table}[!h]
 	\centering
 	\begin{tabular}{| l | l | c | l |}
 		\hline
