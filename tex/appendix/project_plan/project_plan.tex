@@ -13,7 +13,7 @@ An dieser Stelle ist noch zu anzumerken, dass einzelne Textstellen von eigenen, 
 Die Motivation dieser Studienarbeit besteht darin, eine Cross-Platform App zu programmieren, welche die Methode 635 \cite{methode-635} als mobile App für Android und iOS umsetzt. Dabei sollen moderne Technologien zum Einsatz kommen, welche es den Anwendern ermöglichen schneller und einfacher eine Lösung für ein Problem zu erarbeiten.
 
 
-Mehr zum Thema Projektziel ist dem Kapitel \ref{Aufgabenstellung} zu entnehmen.
+Mehr zum Thema Projektziel ist dem Anhang \ref{sec:aufgabenstellung} zu entnehmen.
 
 \subsubsection*{Einschränkungen}
 Das Projekt ist auf die Dauer des Herbstsemester 2018 begrenzt (bis 21. Dezember 2018). Zudem sollte das Projekt mit ungefähr 240 Arbeitsstunden (gesamthaft 480 Stunden) realisiert werden können. Bleibt am Ende Zeit übrig, werden optionale Features implementiert.
@@ -52,7 +52,7 @@ Zur Verwaltung des Codes nutzen wir \href{https://github.com/BrainingOutOfBox/Ap
 \subsubsection*{Dokumentenplan}
 Wie das Projekt selbst, werden auch sämtliche Dokumente ständig überarbeitet und angepasst. Grundsätzlich umfasst der Dokumentenplan aber folgende Bestandteile:
 
-\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Anforderungsspezifikation}]
+\begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Architekturdokumentation}]
 	\item[Projektplan] Der Projektplan umfasst den groben Ablauf des Projektes und legt unter anderem das Vorgehen bei der Entwicklung fest oder wie mit Risiken umgegangen wird.
 	\item[Anforderungsspezifikation] In der Anforderungsspezifikation werden funktionale sowie nicht-funktionale Anforderungen definiert.
 	\item[Vorstudie] In der Vorstudie wird analysiert, welche Backend-Technologien zur Verfügung stehen oder was der Unterschied zwischen Xamarin.Forms und Xamarin native ist.
@@ -63,7 +63,7 @@ Wie das Projekt selbst, werden auch sämtliche Dokumente ständig überarbeitet 
  
 
 \subsubsection*{Besprechungen}
-Das Projektteam trifft sich einmal in der Woche das ganze um sich über den aktuellen Stand des Projekts auszutauschen, Fragen zu klären, Probleme anzugehen oder die nächsten Schritte zu planen. 
+Das Projektteam trifft sich einmal in der Woche um sich über den aktuellen Stand des Projekts auszutauschen, Fragen zu klären, Probleme anzugehen oder die nächsten Schritte zu planen. 
 
 Diese wöchentlichen Besprechungen finden, falls nicht anders vorgesehen, jeden Donnerstagmorgen um 09:00 Uhr statt. 
 
@@ -137,6 +137,7 @@ Der Entwicklungscode wird in öffentlichen Github Repositories unter der Organis
 \begin{description}[leftmargin=!,labelwidth=2cm]
 \item [Doc] \href{https://github.com/BrainingOutOfBox/Doc}{Dieses Repository} enthält alle relevanten Dateien, welche für die Dokumentation von Relevanz sind.
 \item [App] \href{https://github.com/BrainingOutOfBox/App}{Dieses Repository} enthält den gesamten Code für die Xamarin Applikation.
+\item [API] \href{https://github.com/BrainingOutOfBox/API}{Dieses Repository} enthält den gesamten Code für das Play-Backend.
 \end{description}
 
 \subsubsection*{Vorgehen bei der Entwicklung}
@@ -150,7 +151,7 @@ Dies wurde uns so in den Modulen SE1 und SE2 vermittelt.
 %Evtl. muss hier noch ein allgemeiner Workflow für das Arbeiten eingefügt werden.
 
 \subsubsection*{Code Guidelines}
-Da Xamarin auf .Net bzw. C\# aufbaut, werden die Code Guidelines von .Net verwendet. \cite{guidelines-DotNet}
+Da Xamarin auf .Net bzw. C\texttt{\#} aufbaut, werden die Code Guidelines von .Net verwendet. \cite{guidelines-DotNet}
 
 \subsubsection*{Builden und testen der App}
 Für das automatisierte Builden und Testen nach einem Commit wird auf \href{https://appcenter.ms/orgs/BrainingOutOfBox/apps/BrainingOutOfBox-App}{Visual Studio App Center} von Microsoft gesetzt. Zum einen ermöglicht es eine einfache Integration von Github und zum anderen bringt es alles mit, um Xamarin Apps automatisch zu builden, testen und deployen. 
@@ -162,74 +163,74 @@ In unserem Projekt verwenden wir die vier Phasen von Rational Unified Process \c
 \begin{description}[leftmargin=!,labelwidth=\widthof{\bfseries Construction Phase}]
 	\item [Inception Phase] In der Inception Phase geht es hauptsächlich darum, Jira einzurichten und den Projektplan zu schreiben. Diese Phase beinhaltet den Sprint Inception-1.
 	\item [Elaboration Phase] Die Elaboration Phase umfasst die Sprints Elaboration-1 und Elaboration-2. Hier werden die Anforderungen an die Applikation definiert, die Vorstudie durchgeführt und weitere konzeptionelle Arbeiten durchgeführt. Am Ende der Phase müssen alle konzeptionellen Fragen geklärt sein. 
-	\item [Construction Phase] In der Phase der Construction geht es an die Umsetzung der Applikation. Hierfür sind 3.5 Sprints eingerechnet. Dafür stehen die Sprints Construction-1, Construction-2, Construction-3 und Construction-4 zur Verfügung.
+	\item [Construction Phase] In der Phase der Construction geht es an die Umsetzung der Applikation. Hierfür sind 3.5 Sprints eingerechnet. Dafür stehen die Sprints Construction-1, Construction-2, Con\-struc\-tion-3 und Construction-4 zur Verfügung.
 	\item [Transition Phase] In der letzen Phase werden alle abzugebende Dokumente nochmals durchgelesen und allenfalls überarbeitet. Dies geschieht im Sprint Transition-1.
 \end{description}
 
 \subsubsection*{Sprints}
 Ein einzelner Sprint dauert zwei Wochen. So stehen pro Woche insgesamt 32 Stunden für die Studienarbeit zur Verfügung. In unserem Projekt sind folgende Sprints geplant:
 
-\paragraph*{Inception-1}
-\begin{itemize}
-  \item Projektplan erstellen
-  \item Jira einrichten
-  \item einzelne Risikos einschätzen
-\end{itemize}
+\begin{center}
+	\begin{longtable}{| l | p{10cm} |}
+		\hline
+		\textbf{Phase} & \textbf{Arbeiten}\\
+		\hline
+		\textit{Inception-1 } & \begin{itemize}[noitemsep]
+				\item Projektplan erstellen
+				\item Jira einrichten
+				\item einzelne Risikos einschätzen
+			\end{itemize}\\
+		
+		\hline
+		\textit{Elaboration-1}&	\begin{itemize}[noitemsep]
+			\item Projektplan überarbeiten
+			\item NFAs sowie FAs definieren
+			\item UCs definieren
+			\item Methode 635 durchspielen
+			\item GUI Entwürfe designen
+		\end{itemize}\\
+		\hline
+		\textit{Elaboration-2}	&\begin{itemize}[noitemsep]
+			\item Sequenzdiagramm definieren
+			\item Architekturdiagramm definieren
+			\item Domain Model definieren
+			\item Proof-of-Concept (POC) erarbeiten
+		\end{itemize}\\
+		\hline
+		\textit{Construction-1} &\begin{itemize}[noitemsep]
+			\item Aus POC echte Applikation entwickeln
+			\item Use-Cases umsetzen
+			\item Oberflächen mit Xamarin.Forms umsetzen
+			\item Core-Funktionalitäten mit Xamarin umsetzen
+		\end{itemize}\\
+		\hline
+		\textit{Construction-2} &\begin{itemize}[noitemsep]
+			\item Core-Funktionalitäten in PlayFramework umsetzen
+			\item Use-Cases umsetzen
+			\item Oberflächen mit Xamarin.Forms umsetzen
+			\item Core-Funktionalitäten mit Xamarin umsetzen
+		\end{itemize}\\
+		\hline
+		\textit{Construction-3} &\begin{itemize}[noitemsep]
+			\item Oberflächen mit Xamarin.Forms umsetzen
+			\item Core-Funktionalitäten mit Xamarin umsetzen
+			\item Technischer Bericht weiterschreiben
+		\end{itemize} \\
+		\hline
+		\textit{Construction-4} &\begin{itemize}[noitemsep]
+			\item Oberflächen mit Xamarin.Forms umsetzen
+			\item Core-Funktionalitäten mit Xamarin umsetzen
+			\item Technischer Bericht weiterschreiben
+		\end{itemize}\\
+		\hline
+		\textit{Transition-1}&\begin{itemize}[noitemsep]
+			\item Technischer Bericht fertig schreiben
+			\item Letzte Korrekturen am gesamten Dokument vornehmen
+		\end{itemize}\\
+	\hline
+	\end{longtable}
+\end{center}
 
-\paragraph*{Elaboration-1}
-\begin{itemize}
-  \item Projektplan überarbeiten
-  \item NFAs sowie FAs definieren
-  \item UCs definieren
-  \item Methode 635 durchspielen
-  \item GUI Entwürfe designen
-\end{itemize}
-
-\paragraph*{Elaboration-2}
-\begin{itemize}
-  \item Sequenzdiagramm definieren
-  \item Architekturdiagramm definieren
-  \item Domain Model definieren
-  \item Proof-of-Concept (POC) erarbeiten
-\end{itemize}
-
-\paragraph*{Construction-1}
-\begin{itemize}
-  \item Aus POC echte Applikation entwickeln
-  \item Use-Cases umsetzen
-  \item Oberflächen mit Xamarin.Forms umsetzen
-  \item Core-Funktionalitäten mit Xamarin umsetzen
-\end{itemize}
-
-\paragraph*{Construction-2}
-\begin{itemize}
-  \item Core-Funktionalitäten in PlayFramework umsetzen
-  \item Use-Cases umsetzen
-  \item Oberflächen mit Xamarin.Forms umsetzen
-  \item Core-Funktionalitäten mit Xamarin umsetzen
-\end{itemize}
-
-\paragraph*{Construction-3}
-\begin{itemize}
-  \item Oberflächen mit Xamarin.Forms umsetzen
-  \item Core-Funktionalitäten mit Xamarin umsetzen
-  \item Technischer Bericht weiterschreiben
-\end{itemize}
-
-\paragraph*{Construction-4}
-\begin{itemize}
-  \item Oberflächen mit Xamarin.Forms umsetzen
-  \item Core-Funktionalitäten mit Xamarin umsetzen
-  \item Technischer Bericht weiterschreiben
-\end{itemize}
-
-\paragraph*{Transition-1}
-\begin{itemize}
-  \item Technischer Bericht fertig schreiben
-  \item Letzte Korrekturen am gesamten Dokument vornehmen
-\end{itemize}
-
-%TODO Risikotabelle aktualisieren
 \begin{landscape}
 	\thispagestyle{empty}
 	\label{subsec:timeline}
@@ -243,7 +244,8 @@ Ein einzelner Sprint dauert zwei Wochen. So stehen pro Woche insgesamt 32 Stunde
 	
 
 	
-	\includepdf[width=1\linewidth,pages=1,landscape=true,pagecommand=\subsection{Risikotabelle}\label{risiko-tabelle},offset=40 0]{./res/projekt_risiko/TechnischeRisiken.pdf}
+	\includepdf[width=1\linewidth,pages=1,landscape=true,pagecommand=\subsection{Risikotabelle}\label{risiko-tabelle}
+	\thispagestyle{empty},offset=40 0]{./res/projekt_risiko/TechnischeRisiken.pdf}
 	\includepdf[width=1\linewidth,pages=2-,landscape=true]{./res/projekt_risiko/TechnischeRisiken.pdf}
 
 \label{pdf:projekt-risiken}

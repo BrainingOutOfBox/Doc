@@ -9,7 +9,7 @@ In den folgenden Kapiteln werden jegliche funktionalen Anforderungen an die Appl
 
 \begin{figure}[h]
 	\centering
-	\makebox[\textwidth][c]{\includegraphics[width=1.2\linewidth]{img/anforderungen/UC-Methode635}}
+	\makebox[\textwidth][c]{\includegraphics[width=1\linewidth]{img/anforderungen/UC-Methode635}}
 	\caption{Use-Case-Diagramm}
 	\label{fig:ucmethode-635}
 \end{figure}
@@ -60,7 +60,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 \begin{center}
 	\begin{longtable}{| c | p{7cm} |}
 		\hline
-		\multicolumn{2}{|c|}{\textbf{Use Case 7: View Brainstorming Finding}}\\
+		\multicolumn{2}{|c|}{\textbf{Use-Case 7: View Brainstorming Finding}}\\
 		\hline\hline
 		\textit{Primary Actor} & Participant\\
 		\hline
@@ -96,7 +96,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 			\item Das System zeigt dem Benutzer die Übersicht an.
 		\end{enumerate}\\
 		\hline
-		\textit{Frequency of Occurrence} & Oft, Kernfunktionalität\\
+		\textit{Frequency of Occurrence} & Oft, Kernfunktionalität.\\
 		\hline
 	\end{longtable}
 \end{center}
@@ -107,7 +107,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 \begin{center}
 	\begin{longtable}{| c | p{7cm} |}
 		\hline
-		\multicolumn{2}{|c|}{\textbf{Use Case 8: Create Brainwave}}\\
+		\multicolumn{2}{|c|}{\textbf{Use-Case 8: Create Brainwave}}\\
 		\hline\hline
 		\textit{Primary Actor} & Participant\\
 		\hline
@@ -146,7 +146,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 \begin{center}
 	\begin{longtable}{| c | p{7cm} |}
 		\hline
-		\multicolumn{2}{|c|}{\textbf{Use Case 9: Start Brainstorming}}\\
+		\multicolumn{2}{|c|}{\textbf{Use-Case 9: Start Brainstorming}}\\
 		\hline\hline
 		\textit{Primary Actor} & Moderator\\
 		\hline
@@ -158,7 +158,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 		\hline
 		\textit{Main Success Scenario/Basic Flow} & 
 		\begin{enumerate}[noitemsep]
-			\item Der Moderator clickt auf "Brainstorming starten" (o.Ä) auf der Gruppe, die er erstellt hat. 
+			\item Der Moderator clickt auf \grqq Brainstorming starten\grqq{} (o.Ä) auf der Gruppe, die er erstellt hat. 
 			\item Das System überprüft, dass alle Einstellungen korrekt sind und die korrekte Anzahl an Participants in der Gruppe sind. 
 			\item Das System zeigt dem Moderator an, dass die Session gestartet ist.
 			\item Der Moderator kann wie die normalen Participants eine Brainwave (bestehend aus mehreren Ideen) erfassen.
@@ -178,7 +178,7 @@ Die fully-dressed Use-Cases folgen den im Modul \textit{Software Engineering 1} 
 
 
 \paragraph{Abuse-Cases}
-%Abuse cases?
+%AbUse-Cases?
 Um einem Missbrauch der Applikation entgegenzuwirken, sind neben den Use-Cases auch Abuse-Cases definiert. Diese helfen, mit unangebrachtem Inhalt und unangebrachter Verwendung umzugehen.
 \begin{basedescript}{%
 		\desclabelstyle{\multilinelabel}
@@ -226,10 +226,8 @@ Diese Normen sind sehr umfangreich gestaltet. Wir werden uns daher auf die, für
 	
 	\item[Co-Existenz] Sollte zu einem späteren Zeitpunkt entschieden werden ein Web-Frontend zu programmieren, muss dieses co-existent mit der Xamarin Applikation existieren können.
 	
-	\item[Wiederherstellbarkeit] Im Falle eines fehlerhaften Features, muss es innerhalb eines Werktages möglich sein, die Applikation wieder auf den letzten funktionierenden Stand zurück zu holen und erneut zu deployen.	
+	\item[Wiederherstellbarkeit] Im Falle eines fehlerhaften Features, muss es innerhalb eines Werktages möglich sein, die Applikation wieder auf den letzten funktionierenden Stand zurück zu holen und erneut zu deployen.
 	
-	\item[Wiederverwendbarkeit] Die Auswertung von 'Duplicated Code' in SonarQube soll im Bereich zwischen 5-10\% \cite{Duplicated_Code} liegen. Dies deutet auf eine hohe Wiederverwendbarkeit hin, denn ansonsten müsste der Code kopiert werden. 
-	
-	%TODO: Referenz auf Use Cases
+	%TODO: Referenz auf Use-Cases
 	\item[Analysierbarkeit] Das Ausführen eines Use-Cases muss durch Analyse von Logfiles erkennbar sein.
 \end{description}

@@ -46,7 +46,8 @@
 
 %Allow paragraph as extra title
 \usepackage{titlesec}
-
+%Headers/Footers
+\usepackage{fancyhdr}
 
 
 %include external pdfs
@@ -70,7 +71,9 @@
 	numbers=left,
 	numberstyle=\scriptsize,
 	backgroundcolor=\color{lightlightgray},
-	showspaces=false}
+	showspaces=false,
+	morekeywords={var},
+}
 
 \lstset{style=sharpc, tabsize=1}
 

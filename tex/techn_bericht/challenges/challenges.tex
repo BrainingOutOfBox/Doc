@@ -2,11 +2,11 @@
 Hier sind besonders erwähnenswerte Herausforderungen und Hürden beschrieben, die im Verlaufe des Projektes aufkamen. Dies soll anderen Software Ingenieuren oder Interessierten helfen, aus unseren Schwierigkeiten zu lernen. 
 
 \subsubsection{HTTPS REST Schnittstelle in CI/CD aufsetzen}
-Während der Entwicklung des Prototyps in der Evaluation stellten wir fest, dass das Abfragen unserer Backend-Schnittstelle auf Android wie gewünscht funktionierte. Auf iOS jedoch warf die Applikation beim Ausführen eine Exception. Der Grund dafür war, dass iOS keine Verbindungen zu unverschlüsselten Webseiten mehr zulässt. Eine verschlüsselte Website war daher unumgänglich.
+Während der Entwicklung des Prototyps in der Evaluation stellten wir fest, dass das Abfragen unserer Backend-Schnittstelle auf Android wie gewünscht funktionierte. Auf iOS jedoch warf die Applikation beim Ausführen eine Exception. Der Grund dafür war, dass iOS seit Version 9 \cite{ios-9-ats} keine Verbindungen zu unverschlüsselten Webseiten mehr zulässt. Eine verschlüsselte Website war daher unumgänglich.
 
 Nach kurzen Recherchen haben wir für das Erstellen und Validieren des Zertifikates auf Let's Encrypt \cite{letsencrypt} gewählt, gerade deshalb weil eine ausführliche Dokumentation und eine rasche Generierung möglich ist. 
 
-Auch mit dem verwendeten Play Framework sollte das Aufsetzen des HTTPS Endpunktes kein Problem darstellen, mit einem Parameter beim Start der Applikation verschlüsselt Play die Seite automatisch.
+Auch mit dem verwendeten PlayFramework sollte das Aufsetzen des HTTPS Endpunktes kein Problem darstellen, mit einem Parameter beim Start der Applikation verschlüsselt Play die Seite automatisch.
 
 Nachdem das Zertifikat installiert wurde und die Applikation lokal erfolgreich verschlüsselt lief, galt es, das Gesamte noch in den Build-Prozess einzubauen. Dabei kam das Problem auf, dass der Pfad zum Keystore, der das Let's Encrypt-Zertifikat beinhaltet, nicht gültig war. Nach mehrmaligem, gründlichem Überprüfen des Pfades und neu Builden, wurden immer noch Exceptions geworfen.
 

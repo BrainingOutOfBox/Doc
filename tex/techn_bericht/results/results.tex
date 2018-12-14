@@ -96,7 +96,6 @@ if (brainstormingTeam!= null && brainstormingTeam.getNrOfParticipants() > brains
             Logger.info(result.getModifiedCount() + " Team successfully updated");
         }
     });
-
     return ok(Json.toJson(new SuccessMessage("Success", "Participant successfully added to the brainstormingTeam")));
 
 } else {
@@ -153,7 +152,7 @@ Ist dies nicht der Fall, prüft er als nächstes, ob die Endzeit der aktuellen R
 
 Sollte keine der Bedingungen (Zeile 10, 15 oder 16) zutreffen, so beendet sich der \texttt{TimerTask} mittels \textit{cancel} selbst. 
 
-Da der executor aber nach 5s den nächsten \texttt{TimerTask} startet, ist so für die gesamte Dauer, für die das \textit{BrainstormingFinding} läuft, ein 'Watcher' für den korrekten Ablauf zuständig. Die Methode \textit{startWatcherForBrainstormingFinding(String identifier)} wird beim Start eines \textit{BrainstormingFinding} ausgeführt.
+Da der \texttt{executor} aber nach 5s den nächsten \texttt{TimerTask} startet, ist so für die gesamte Dauer, für die das \textit{BrainstormingFinding} läuft, ein \grqq Watcher\grqq{} für den korrekten Ablauf zuständig. Die Methode \textit{startWatcherForBrainstormingFinding(String identifier)} wird beim Start eines \textit{BrainstormingFinding} ausgeführt.
 
 \begin{lstlisting}
 public Result startBrainstorming(String findingIdentifer) throws ExecutionException, InterruptedException {
@@ -190,7 +189,7 @@ containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
 Das Framework bietet weiter \textit{Dependency Injection}\footnote{Siehe Application Architecture Vorlesung Woche 5} an. Zum Beispiel kann so ein Navigation Service jeder Komponente im Konstruktor mitgegeben werden, dass diesem das Navigieren ermöglicht wird. 
 
-Als Ausgangslage für die Umsetzung dienten die Mockups. Aufgrund diesen recherchierten wir in der Dokumentation von Xamarin Forms nach möglichen User Controls und Layouts, die eingesetzt werden sollten. Dabei stellte sich heraus, dass das erarbeitete Navigationskonzept in den Mockups sich nicht implementieren liess. Problem dabei war, dass das Mockup mit den von Xamarin Forms dargebotenen Layouts nur sehr umständlich programmiert werden konnte. Dabei hätten wir eine \texttt{MasterDetailPage} mit Swipe Gestures erweitern müssen, welche aber schon vom Framework für das Auf- und Zuklappen der Seitennavigation verwendet werden. Deshalb haben wir uns für eine \texttt{TabbedPage} entschieden, die die relevanten Daten ebenso nützlich darstellt. In Abbildung \ref{fig:comparison-mockup-app} sind die Unterschiede zwischen  der App und dem Mockup ersichtlich.
+Als Ausgangslage für die Umsetzung dienten die Mockups. Aufgrund diesen recherchierten wir in der Dokumentation von Xamarin.Forms nach möglichen User Controls und Layouts, die eingesetzt werden sollten. Dabei stellte sich heraus, dass das erarbeitete Navigationskonzept in den Mockups sich nicht implementieren liess. Problem dabei war, dass das Mockup mit den von Xamarin.Forms dargebotenen Layouts nur sehr umständlich programmiert werden konnte. Dabei hätten wir eine \texttt{MasterDetailPage} mit Swipe Gestures erweitern müssen, welche aber schon vom Framework für das Auf- und Zuklappen der Seitennavigation verwendet werden. Deshalb haben wir uns für eine \texttt{TabbedPage} entschieden, die die relevanten Daten ebenso nützlich darstellt. In Abbildung \ref{fig:comparison-mockup-app} sind die Unterschiede zwischen  der App und dem Mockup ersichtlich.
 
 \begin{figure}
 	\centering
@@ -214,7 +213,7 @@ Tabelle \ref{tab:visual-elements} zeigt die Sichtbarkeit einiger relevanten Cont
 	\begin{longtable}{| l | p{2cm} |p{2cm} |p{2cm} |}
 		
 		\hline
-		&Waiting & Running & Ended\\
+		Controls &Waiting & Running & Ended\\
 		\hline
 		\textbf{Header}	& & & \\
 		Send Button & \checkmark (disabled) & \checkmark & x\\
@@ -240,7 +239,7 @@ Einige der erwähnten Komponenten können der Abbildung \ref{fig:brainstorming-o
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\linewidth,height=0.4\textheight,keepaspectratio]{img/techn-bericht/brainstorming-overview}
-	\caption{Brainstorming Finding Übersicht während dem Swipen vom einen ins nächste BrainSheet}
+	\caption{Brainstorming Finding Übersicht während des Swipens von einem ins nächste BrainSheet}
 	\label{fig:brainstorming-overview}
 \end{figure}
 \newpage
@@ -320,7 +319,7 @@ In Tabelle \ref{tab:verwendete-libraries-frontend} sind die verwendeten Librarie
 
 
 \subsubsection{Vergleich Soll/Ist}\label{subsub:vergleich-soll-ist}
-Im Rückblick auf die in Kapitel \ref{subsec:ziele} formulierten Ziele und Liefergegenstände wurde Folgendes erreicht: Die Konfigurierbarkeit ist durch die Applikation gegeben. Es ist daher möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potential, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam liegt an der begrenzten Zeit von 14 Wochen. Aus gleichem Grund wurden die beiden anderen Sub-Use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.
+Die im Anhang \ref{sec:aufgabenstellung} formulierten Ziele und Liefergegenstände wurden wie folgt erreicht. Die Konfigurierbarkeit ist durch die Applikation gegeben. Es ist daher möglich, Bestandteil von verschiedenen Teams zu sein und darin mehrere BrainstormingFindings mit unterschiedlichen Anzahl an Runden bzw. Zeit pro Runde zu erstellen. Des Weiteren werden Smartphone Fähigkeiten wie Kamera verwendet, um dem Team beizutreten. Hier sehen wir vor allem in Kombination mit der Erweiterbarkeit noch Potenzial, die Kamera als Mittel fürs Brainstorming selbst einzusetzen (gemäss UC8b: Insert Picture). Dass dies nicht dazu kam liegt an der begrenzten Zeit von 14 Wochen. Aus gleichem Grund wurden die beiden anderen Sub-Use-Cases UC8a: Insert Weblink und UC8c: Insert Sketch nicht umgesetzt.
 
 Das Persistieren von Ideen in unserem System bietet der Papierversion gegenüber einen Vorteil, da die einzige Information für das spätere Abholen der Ideen die Login-Daten sind. Mit diesen können alle jemals erfassten BrainstormingFindings wieder gelesen werden, während in der Papierversion die Unterlagen physisch hervorgeholt werden müssten, falls sie überhaupt archiviert wurden.  
 

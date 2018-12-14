@@ -10,7 +10,16 @@
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{}
+\chead{\nouppercase{\rightmark}}
+\lfoot{\today}
+\rfoot{\thepage}
 
+
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \begin{document}
 	\include{./tex/title/title}
 
