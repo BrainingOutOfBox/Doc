@@ -5,15 +5,18 @@ Um sicher zu stellen, dass unsere Cross-Plattform Applikation in ihrer Kernfunkt
 \subsection{Verweise}
 Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:fully_dressed_use_cases} ab.
 
+\subsection{Testaufbau}
+Der Test wurde am 06. Dezember 2018 von Oliver Dias, Elias Brunner und Prof. Dr. Zimmermann einmal komplett anhand des vorliegenden Protokolls durchgeführt. Dabei wurde ein iPhone 6S mit der Version iOS 12.1 und zwei Android Smartphones (Nexus 5X und Huawei P10) mit der Android-Version 8.1.0 verwendet. Die Testdurchführung erfolgte manuell. Die einzelnen Testfälle wurden allerdings auch während der Entwicklung mehrfach individuell getestet.
+
 \subsection{Testfälle}
 
 \renewcommand{\arraystretch}{1.35}
 \begin{center}
-	\begin{longtable}{| p{1cm} | p{5cm} | p{5cm} | p{2cm} |}
+	\begin{longtable}{| p{1cm} | p{4cm} | p{5cm} | p{3cm} |}
 		\hline
 		\multicolumn{4}{|c|}{\textbf{Use Case 7: View Brainstorming Finding}}\\
 		\hline\hline
-		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
+		Test Nr & Beschreibung & Erwartetes Resultat & Beo\-bach\-te\-tes Verhalten (Bestanden) \\
 		\hline
 		1 & Als Participant möchte ich als Letzter die letzte Runde abschliessen. & Das System speichert meine Notizen auf dem Server und zeigt mir eine Meldung an, dass das Finding einsehbar ist. & J Führung für User könnte besser sein \\
 		\hline
@@ -31,11 +34,11 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 
 \renewcommand{\arraystretch}{1.35}
 \begin{center}
-	\begin{longtable}{| p{1cm} | p{5cm} | p{5cm} | p{2cm} |}
+	\begin{longtable}{| p{1cm} | p{4cm} | p{5cm} | p{3cm} |}
 		\hline
 		\multicolumn{4}{|c|}{\textbf{Use Case 8: Create Brainwave}}\\
 		\hline\hline
-		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
+		Test Nr & Beschreibung & Erwartetes Resultat & Beo\-bach\-te\-tes Verhalten (Bestanden) \\
 		\hline
 		1 & Als Participant möchte ich Notizen während der laufenden Rundenzeit zum aktuellen Problem erfassen. & Das System zeigt meine Notizen an. & J nicht immer klar wo die Idee eingefügt wurde \\
 		\hline
@@ -48,11 +51,11 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 
 \renewcommand{\arraystretch}{1.35}
 \begin{center}
-	\begin{longtable}{| p{1cm} | p{5cm} | p{5cm} | p{2cm} |}
+	\begin{longtable}{| p{1cm} | p{4cm} | p{5cm} | p{3cm} |}
 		\hline
 		\multicolumn{4}{|c|}{\textbf{Use Case 9: Start Brainstorming}}\\
 		\hline\hline
-		Test Nr & Beschreibung & Erwartetes Resultat & Bestanden (J/N) \\
+		Test Nr & Beschreibung & Erwartetes Resultat & Beo\-bach\-te\-tes Verhalten (Bestanden) \\
 		\hline
 		1 & Als Moderator möchte ich ein Brainstorming-Session starten. & Das System überprüft zunächst, ob alle Einstellungen stimmen und startet dann die Brainstorming-Session. & J \\
 		\hline
@@ -65,11 +68,11 @@ Die Testfälle leiten sich von den Fully-Dressed Use Cases aus Kapitel \ref{par:
 Nachdem wir die Testfälle mehrmals mit einem iPhone und zwei Android-Smartphones durchgeführt haben, haben sich folgende Punkte für Verbesserungen herauskristallisiert:
 
 \begin{enumerate}
-	\item In der gesamten Applikation gibt es fast keine Führung für den User. Damit ist die Orientierung für den Enduser noch sehr schwierig. 
+	\item In der gesamten Applikation gibt es fast keine Führung für den User. Damit ist die Orientierung für den Enduser gerade zu Beginn noch sehr schwierig und nicht immer intuitiv. Hier würde es sich anbieten, diese beim ersten Start in einem Tutorial zu erklären und dabei Fragen wie \grqq Wo bin ich?\grqq{} oder \grqq Was ist hier zu tun?\grqq{} zu erläutern.
 	\item Auch gibt es keine Rückmeldungen vom System an den User (Erfolgreiche Eingabe etc.), was den Umstand der schwierigen Orientierung von verstärkt.
 	\item Ein weiterer Punkt, welcher für die schlechte Userführung verantwortlich ist, war der Umstand, dass  bei der Eingabe der einzelnen Ideen nicht klar war, dass man nach links und rechts wischen kann, um die anderen Ideen und Blätter anzusehen. Hier würde dem User ein Label mit der aktuellen Blattnummer (Sheet 1/3) viel Klarheit schaffen.
-	\item Weiter würde eine Umbenennung einzelner Buttons (\grqq Login\grqq{} zu \grqq Login to Methode 635\grqq{} oder \grqq Add Brainstorming Finding\grqq{} zu \grqq Add Brainstorming Session\grqq{})
-	\item Als zusätzliches Feature wurde die Möglichkeit gesehen, die Ideen einer abgeschlossenen Brainstorming Session als PDF abzuspeichern oder gar einer anderen App zur Verfügung zu stellen.
+	\item Weiter würde eine Umbenennung einzelner Buttons (\grqq Login\grqq{} zu \grqq Login to Methode 635\grqq{} oder \grqq Add Brainstorming Finding\grqq{} zu \grqq Add Brainstorming Session\grqq{}) zur Verbesserung der Benutzerführung beitragen.
+	\item Als zusätzliches Feature wurde die Möglichkeit gesehen, die Ideen einer abgeschlossenen Brainstorming Session als PDF abzuspeichern oder gar einer anderen App zur Verfügung zu stellen. Auch wäre hier eine \grqq Copy-To-Clipboard\grqq{} Funktion vorstellbar.
 \end{enumerate}
 Während der Testdurchführung hat sich herausgestellt, dass der automatische Rundenwechsel von der Applikation nicht immer korrekt erkannt und durchgeführt wird. Dies führt dann zu irreführenden Zuständen für den Benutzer. Dafür konnte aber ein Workaround mittels einer Sync-Funktion entwickelt werden. Sollte der Rundenwechsel nicht automatisch funktionieren, kann auf das Logo geklickt werden, um den Zustand neu vom Server zu laden.
 

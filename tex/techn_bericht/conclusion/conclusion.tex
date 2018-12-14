@@ -1,16 +1,16 @@
 \subsection{Schlussfolgerungen}
-Im Kapitel der Schlussfolgerungen wollen wir nochmals auf unser Projekt und dessen Verlauf schauen und unsere Ergebnisse kritisch bewerten. Dabei wollen wir aufzeigen, was wir in dieser Zeit erreicht haben aber auch wo es noch Verbesserungspotenzial gibt. Ausserdem soll mit dem Kapitel \ref{subsub:Ausblick} aufgezeigt werden, was das weitere Vorgehen für dieses Projekt sein könnte.
+Im Kapitel der Schlussfolgerungen wollen wir nochmals auf unser Projekt und dessen Verlauf schauen und unsere Ergebnisse kritisch bewerten. Dabei wollen wir aufzeigen, was wir in dieser Zeit erreicht haben, aber auch an welchen Stellen es noch Verbesserungspotenzial gibt. Ausserdem soll im Kapitel \ref{subsub:Ausblick} aufgezeigt werden, was das weitere Vorgehen für dieses Projekt sein könnte.
 
 \subsubsection{Ergebnisbewertung}
-Wie schon in Kapitel \ref{subsub:vergleich-soll-ist} angedeutet, konnten die meisten Ziele erreicht werden. Voraussetzung dafür waren einige Faktoren, unter anderem sehr gute Kommunikation untereinander, die richtig gewählten Management-Methoden und Techniken sowie das Verwenden von einem unterstützenden Toolset. 
+Kapitel \ref{subsub:vergleich-soll-ist} zeigt auf, dass viele Ziele erreicht werden konnten. Voraussetzung dafür waren einige Faktoren, unter anderem sehr gute Kommunikation untereinander, die richtig gewählten Management-Methoden und Techniken sowie das Verwenden von einem unterstützenden Toolset. 
 
 Besonders in der Elaboration Phase verhalf das Herunterbrechen der Methode 635 in verschiedene Komponenten dem Verständnis und gab Aufschluss über die Herangehensweise für die technische Umsetzung. 
 
 Diese verlief dann ziemlich effizient, wobei aber immer wieder kleinere Probleme auftauchten. Durch Absprache untereinander und mit dem Betreuer wurde aber immer eine Lösung gefunden. Am Schluss der Entwicklung gab es einige Schwierigkeiten, da der Code mit dem Implementieren weiterer Features immer umfangreicher wurde und somit auch unübersichtlicher. 
 
-Alle erwähnten Punkte kombiniert hatten zur Folge, dass eine lauffähige Applikation zustande kam, die für das Brainstorming verwendbar ist. Auch wenn die Benutzung der Applikation nicht immer ganz klar ist, schränkt sie den Benutzer nicht vor der Kernfunktionalität ein. Dies konnte nur geschehen, weil wir während der Projektzeit ein starker Fokus auf die Funktionalität legten. Die Usability haben wir also gegenüber der Funktionalität abgewogen und darin verhältnismässig weniger Aufwand investiert. 
+Alle erwähnten Punkte kombiniert hatten zur Folge, dass eine lauffähige Applikation zustande kam, die für das Brainstorming verwendbar ist. Der durchgeführte Test am 06. Dezember ergab, dass die Benutzung der Applikation für den Endbenutzer nicht immer ganz klar und intuitiv ist. Dies schränkt den Benutzer aber nicht in der Kernfunktionalität, der kreativen Ideenfindung, ein. Dies konnte nur geschehen, weil wir während der Projektzeit ein starker Fokus auf die Funktionalität legten. Die Usability haben wir also gegenüber der Funktionalität abgewogen und darin verhältnismässig weniger Aufwand investiert. 
 
-Das Projekt ist in unseren Augen erfolgreich verlaufen, in einer zukünftigen Arbeit würden beide Autoren ein ähnliches Vorgehen wählen. 
+Das Projekt ist in unseren Augen erfolgreich verlaufen. In einer zukünftigen Arbeit würden beide Autoren ein ähnliches, iteratives Vorgehen wählen, den Fokus aber auch stärker auf die Usability legen. 
 
 \subsubsection{Bekannte Probleme}
 Dieses Kapitel dient dazu, Fehlverhalten in unserem System zu dokumentieren.
@@ -25,7 +25,7 @@ Dieses Kapitel dient dazu, Fehlverhalten in unserem System zu dokumentieren.
 	Wenn das Brainstorming gestartet wird oder eine neue Runde beginnt, kommt es vor, dass die Sheets nicht wie gewünscht aktualisiert werden. Abhilfe verschafft die Sync-Funktionlität, die hinter dem Icon versteckt ist.
 	
 	\item [Kein Feedback beim Team erstellen] 
-	Wird zuerst ein Team erstellt, darauf ein Brainstorming Finding erstellt und gestartet und im Anschluss darauf versucht, erneut ein Team zu erstellen, wird man nicht weitergeleitet. Das Team wird zwar auf dem Backend erstellt, jedoch auf dem Frontend nicht aktualisiert.
+	Wird zuerst ein Team erstellt, darauf ein BrainstormingFinding erstellt und gestartet und im Anschluss darauf versucht, erneut ein Team zu erstellen, wird man nicht auf dessen Liste von BrainstormingFindings weitergeleitet. Das Team wird zwar auf dem Backend erstellt, jedoch auf dem Frontend nicht aktualisiert.
 \end{basedescript}
 
 
@@ -38,8 +38,8 @@ Grundbaustein für diese Erweiterungen sind aber sauber entworfene Software Arch
 
 Des Weiteren sehen wir vor allem einer Erweiterung mit der Skizzier-Funktion viel Potential, da mit Skizzen die Grenzen der Kreativität loser sind als nur mit Text oder Photos. Um dieses sinnvoll anbieten zu können, muss der Fokus auf die Usability erheblich steigen. Die Applikation sollte auf Tablets gut unterstützt werden, denn dort sehen wir die meisten Benutzer, welche die Skizzier-Funktion verwenden könnten. 
 
-Die Usability sollte nicht nur im Bezug auf die zusätzlichen Funktionen, sondern generell verbessert werden. Xamarin Forms bietet viele interessante Konzepte für Animationen und Visualisierungen, mit denen viel für die Benutzerführung gemacht werden könnte. Durch das Analysieren der Dokumentation von Xamarin Forms könnten viele angebrachte Konzepte und Elemente entdeckt werden, die der Usability zugute kämen.
+Die Usability sollte nicht nur im Bezug auf die zusätzlichen Funktionen, sondern generell verbessert werden. Xamarin Forms bietet viele interessante Konzepte für Animationen und Visualisierungen, welche die Benutzerführung stark verbessern könnten. Durch das Analysieren der Dokumentation von Xamarin Forms könnten viele angebrachte Konzepte und Elemente entdeckt werden, die der Usability zugute kämen.
 
-Als zusätzliche Erweiterung wäre einen weiteren Client denkbar, der zum Beispiel als WebApp läuft. Dazu müsste allerdings die Logik rund um das Team etwas angepasst werden, denn aktuell kann man nur über das Scannen eines QR-Codes einem Team beitreten.
+Als zusätzliche Erweiterung wäre eine webbasierte Applikation denkbar. Dazu müsste allerdings die Logik rund um das Team etwas angepasst werden, denn aktuell kann man nur über das Scannen eines QR-Codes einem Team beitreten.
 
 Wie aus diesen Punkten ersichtlich ist, stecken in dieser Applikation viele spannende Erweiterungsmöglichkeiten. Aus diesen Gründen sehen wir ein grosses Potential in einer allfälligen Folgearbeit.
